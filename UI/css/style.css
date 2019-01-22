@@ -11,8 +11,12 @@ body{
     font-size: 1.6rem;
 }
 
-h2{
-    margin:0.2rem;
+h2, h1{
+    margin:0;
+}
+a{
+    text-decoration: none;
+    color: #00bfff;
 }
 
 header{
@@ -67,10 +71,43 @@ input[type=submit]{
     text-align: center;
     box-sizing: border-box;
     font-size: 2rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer; 
 }
 
 .btn-success{
     background-color:  #4CAF50;
+}
+
+.home{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color:#00bfff;
+    color: #0000ff;
+}
+
+.home-item-con{
+    position: absolute;
+    top: 30vh;
+    left: 35vw;
+    text-align: center;
+}
+
+.home-item-con h1{
+    font-size: 10rem;
+}
+
+.home-btn{
+    display: inline;
+}
+
+.home-btn button{
+    background-color: #01579b;
+    border: 1px solid #01579b;
+    padding: 1rem 2rem;    
 }
 
 
