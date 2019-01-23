@@ -81,7 +81,6 @@ input[type=submit]{
 }
 
 .home{
-    position: relative;
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -91,13 +90,13 @@ input[type=submit]{
 
 .home-item-con{
     position: absolute;
-    top: 30vh;
-    left: 35vw;
+    top: 30%;
+    left: 38%;
     text-align: center;
 }
 
 .home-item-con h1{
-    font-size: 10rem;
+    font-size: 5rem;
 }
 
 .home-btn{
