@@ -60,7 +60,7 @@ label{
 }
 
 input[type=submit]{
-    width: 20rem;   
+    width: 12rem;   
 }
 
 .btn-con{
@@ -109,6 +109,10 @@ input[type=submit]{
     padding: 1rem 2rem;    
 }
 
+.item-box a{
+    padding: 2rem;
+}
+
 
 @media screen and (min-width: 800px){
     .item-box{
@@ -118,6 +122,10 @@ input[type=submit]{
 
     label{
         width: 17%;
+    }
+
+    input[type=submit]{
+        width: 20rem;   
     }
 }
 
