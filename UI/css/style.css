@@ -53,7 +53,7 @@ header{
     text-align: center;
 }
 
-input{
+input, select{
     width: 70%;
     margin: 1rem 1rem;
     padding: 1rem;
@@ -160,6 +160,10 @@ input[type=submit]{
 
 .main aside a{
     color: 	#0000ff;
+}
+
+.main article{
+    min-width: 60%;
 }
 
 .main article table{
@@ -287,6 +291,33 @@ aside li{
     margin: 2rem;;
 }
 
+article p{
+    padding-left: 2rem;
+    margin: 1rem;
+}
+
+.apply-con .btn{
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+}
+
+.apply-con .btn a{
+    color: #000000;
+}
+
+.apply-con{
+    border: .1rem solid #ff9900;
+    border-radius: 1rem;
+    background-color: #ff9900;
+    color: #ffffff;
+    margin: 0 2rem;
+}
+
+
+
+
+
 @media screen and (min-width: 800px){
     .item-box{
         width: 60% ;
@@ -326,7 +357,7 @@ aside li{
     }
 
     .main article label{
-        width: auto;
+        min-width: 25%;
     }
 
     .dashboard header{
