@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>POLITICO | Add Party</title>
+
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container dashboard">
+        <header>
+            <div class="title">
+                <h3>Admin Dashboard</h3>
+            </div>
+            <div class="user">
+                <div class="photo">
+                    <img src="../images/user.jpg" alt="Admin">
+                </div>
+                <div class="username">
+                    <p>Admin</p>
+                </div>
+            </div>
+            <div class="logout-con">
+                <button class="btn btn-warning"><a href="#">Logout</a></button>
+            </div>
+        </header>
+        <div class="main">
+            <aside>
+                <div class="menu">
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li class="treeview">
+                            <a href="#">
+                                <span>Political Parties</span>
+                                <span class="to-right"><i class="arrow down"></i></span>
+                            </a>
+                            <ul class="treeview-menu hide">
+                                <li><a href="political-parties.html">View Parties</a></li>
+                                <li><a href="add_party.html">Add Party</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <span>Political Offices</span>
+                                <span class="to-right"><i class="arrow down"></i></span>
+                            </a>
+                            <ul class="treeview-menu hide">
+                                <li><a href="political_offices.html">View Offices</a></li>
+                                <li><a href="add_office.html">Add Office</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <article>
+                <div>
+                    <h3>Add Political Party</h3>
+                </div>
+                <form action="#" enctype="multipart/form-data">
+                    <div>
+                        <label for="party">Party Name</label>
+                        <input type="text" name="party" placeholder="Party Name">
+                    </div>
+                    <div>
+                        <label for="acronym">Party Name</label>
+                        <input type="text" name="acronym" placeholder="Party Name">
+                    </div>
+                    <div>
+                        <label for="logo">Party Logo</label>
+                        <input type="file" name="logo">
+                    </div>
+                    <div class="btn-con">
+                        <input type="submit" class="btn btn-success" value="Add Party">
+                    </div>
+                </form>
+            </article>
+        </div>
+        <footer>
+            <span>Copyright@2019  @fantastic-genius (Andela Bootcamp Cycle41)</span>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
