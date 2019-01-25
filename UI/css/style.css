@@ -332,7 +332,7 @@ aside li{
     .dashboard header{
         display: flex;
         flex-direction: row;
-        flex: 0 0 20vh;
+        flex: 0 0 auto;
     }
 
     .dashboard .title{
