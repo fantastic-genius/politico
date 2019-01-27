@@ -23,8 +23,14 @@ a{
     color: #00bfff;
 }
 table,th,td{
-    border: 0.1rem solid #666666;
+    border: 0.1rem solid #ffffff;
     border-collapse: collapse;
+}
+
+table{
+    border-radius: 2rem;
+    overflow: hidden;
+    background-color: #dddd;
 }
 
 header{
@@ -318,6 +324,45 @@ article p{
     padding-left: 2rem;
 }
 
+.dashboard .profile-pix img{
+    width: 10rem;
+    height: 10rem;
+    border: .1rem solid #01579b;
+    border-radius: 5rem;
+    margin: 2rem 4rem;
+}
+
+.dashboard .profile-pix{
+    text-align: center;
+}
+.profile-con{
+    width: 80%;
+    height: 80%;
+    border: .1rem solid #01579b;
+    border-radius: 2rem;
+    margin: 4rem 2rem;
+    padding: 2rem;
+}
+
+.dashboard .profile-con table{
+    border-radius: 2rem;
+    overflow: hidden;
+    margin: 0 0 2rem 0;
+    width: 100%;
+}
+
+.profile-con td{
+    background: #dddddd;
+    border-left: none;
+    border-bottom: 0.2rem solid white; 
+}
+.profile-con tr td:first-of-type{
+    border-right: 0.2rem solid #01579b;
+}
+
+.profile-con a{
+    color: #000000;
+}
 
 
 @media screen and (min-width: 800px){
