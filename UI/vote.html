@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>POLITICO | Aspirants</title>
+
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container dashboard">
+        <header>
+            <div class="title">
+                <h3>User Dashboard</h3>
+            </div>
+            <div class="user">
+                <div class="photo">
+                    <img src="../images/user.jpg" alt="User">
+                </div>
+                <div class="username">
+                    <p>John, Doe</p>
+                </div>
+            </div>
+            <div class="logout-con">
+                <button class="btn btn-warning"><a href="#">Logout</a></button>
+            </div>
+        </header>
+        <div class="main">
+            <aside>
+                <div class="menu">
+                    <ul>
+                        <li><a href="user_dashboard.html">Dashboard</a></li>
+                        <li><a href="vote.html">Vote</a></li>
+                        <li><a href="view_parties.html">Parties</a></li>
+                        <li><a href="#">My Votes</a></li>
+                        <li><a href="apply.html">Apply</a></li>
+                    </ul>
+                </div>
+            </aside>
+            <article>
+                <div>
+                    <h3>Vote Choice Aspirant</h3>
+                </div>
+                <div class="select-con">
+                    <label for="office">Political Office</label>
+                    <select name="office" id="office">
+                        <option value="1">President</option>
+                        <option value="2">Governor</option>
+                    </select>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <td>Photo</td>
+                                <td>Politician Name</td>
+                                <td>Party</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="choice" name="choice"></td>
+                                <td><img src="../images/user.jpg" alt="Pol"></td>
+                                <td>Muhammad Buhari</td>
+                                <td>APC</td>
+                                <td>
+                                    <button class="btn btn-warning hide"><a href="#">Vote</a></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="choice" name="choice "></td>
+                                <td><img src="../images/user.jpg" alt="Pol"></td>
+                                <td>Muhammad Buhari</td>
+                                <td>APC</td>
+                                <td>
+                                    <button class="btn btn-warning hide"><a href="#">Vote</a></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="choice" name="choice"></td>
+                                <td><img src="../images/user.jpg" alt="Pol"></td>
+                                <td>Muhammad Buhari</td>
+                                <td>APC</td>
+                                <td>
+                                    <button class="btn btn-warning hide"><a href="#">Vote</a></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>    
+            </article>
+        </div>
+        <footer>
+            <span>Copyright@2019  @fantastic-genius (Andela Bootcamp Cycle41)</span>
+        </footer>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -13,6 +13,30 @@ treeviews.forEach(treeview => {
                 sub_menu.classList.add('hide');
             }  
         });
-        
+         
     })
 });
+
+
+let choices = document.querySelectorAll('.choice');
+
+choices.forEach(choice => {
+    choice.addEventListener('click', (e) => {
+        choice.checked = true;
+        let parent_tr = choice.closest('tr');
+        let cor_btn = parent_tr.querySelectorAll('button');
+        cor_btn[0].classList.remove('hide');
+
+        choices.forEach(choic => {
+            if(choic !== choice){
+                choic.checked = false;
+                let parent_tr = choic.closest('tr');
+                let cor_btn = parent_tr.querySelectorAll('.btn');
+                if(!cor_btn[0].classList.contains('hide')){
+                    cor_btn[0].classList.add('hide');
+                }
+                
+            }
+        })
+    })
+})
