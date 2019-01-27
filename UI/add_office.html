@@ -51,6 +51,16 @@
                                 <li><a href="add_office.html">Add Office</a></li>
                             </ul>
                         </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <span>Settings</span>
+                                <span class="to-right"><i class="arrow down"></i></span>
+                            </a>
+                            <ul class="treeview-menu hide">
+                                <li><a href="admin_profile.html">Update Profile</a></li>
+                                <li><a href="admin_change_password.html">Change Password</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </aside>
@@ -62,6 +72,15 @@
                     <div>
                         <label for="office">Political Office Name</label>
                         <input type="text" name="office" placeholder="Political Office Name">
+                    </div>
+                    <div>
+                        <label for="type">Type</label>
+                        <select name="type" id="type">
+                            <option value="federal">Federal</option>
+                            <option value="legislative">Legislative</option>
+                            <option value="state">State</option>
+                            <option value="local government">Local Government</option>
+                        </select>
                     </div>
                     <div class="btn-con">
                         <input type="submit" class="btn btn-success" value="Add Office">
