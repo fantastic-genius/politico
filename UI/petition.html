@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>POLITICO | User Dashboard</title>
+    <title>POLITICO | Petition</title>
 
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -51,18 +51,30 @@
             </aside>
             <article>
                 <div>
-                    <h3>Dashboard</h3>
+                    <h3>Submit Election Petition</h3>
                 </div>
-                <div class="apply-con">
-                    <p>Apply for a political office <button class="btn btn-success"><a href="apply.html">Apply Here</a></button></p>
-                </div>
+                <form action="#">
+                    <div>
+                        <label for="office">Political Office</label>
+                        <select name="office" id="office">
+                            <option value="1">President</option>
+                            <option value="2">Governor</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="petition-body">Content</label>
+                        <textarea name="petition-body" id="petition-body" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="btn-con">
+                        <input type="submit" class="btn btn-success" value="Submit Petition">
+                    </div>
+                </form>
             </article>
         </div>
         <footer>
             <span>Copyright@2019  @fantastic-genius (Andela Bootcamp Cycle41)</span>
         </footer>
     </div>
-
     <script src="js/main.js"></script>
 </body>
 </html>

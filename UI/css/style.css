@@ -59,13 +59,17 @@ header{
     text-align: center;
 }
 
-input, select{
+input, select, textarea{
     width: 70%;
     margin: 1rem 1rem;
     padding: 1rem;
     border: 1px solid #cccccc;
     border-radius: 0.5rem;  
     font-size: 1.6rem; 
+}
+
+textarea{
+    vertical-align: top;
 }
 
 label{
