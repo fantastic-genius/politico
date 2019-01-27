@@ -76,7 +76,7 @@ label{
 }
 
 input[type=submit]{
-    width: 12rem;   
+    width: auto;   
 }
 
 .btn-con{
@@ -362,6 +362,10 @@ article p{
 
 .profile-con a{
     color: #000000;
+}
+
+.change-psw-con{
+    background-color: #dddddd;
 }
 
 
