@@ -40,3 +40,29 @@ choices.forEach(choice => {
         })
     })
 })
+
+const edit_profile = document.querySelector("#edit-profile");
+const cancel_edit = document.querySelector("#cancel-edit");
+
+edit_profile.addEventListener("click", (e) => {
+    const fields = document.querySelectorAll(".profile-box input");
+
+    fields.forEach(field => {
+        field.removeAttribute('readonly');
+    })
+
+    cancel_edit.classList.remove('hide');
+    edit_profile.classList.add("hide")
+})
+
+
+cancel_edit.addEventListener("click", (e) => {
+    const fields = document.querySelectorAll(".profile-box input");
+
+    fields.forEach(field => {
+        field.setAttribute("readonly", true);
+    })
+
+    edit_profile.classList.remove('hide');
+    cancel_edit.classList.add("hide")
+})

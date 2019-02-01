@@ -12,15 +12,7 @@
     <div class="container dashboard">
         <header>
             <div class="title">
-                <h3>User Dashboard</h3>
-            </div>
-            <div class="user">
-                <div class="photo">
-                    <img src="../images/user.jpg" alt="User">
-                </div>
-                <div class="username">
-                    <p>John, Doe</p>
-                </div>
+                <h3>Admin Dashboard</h3>
             </div>
             <div class="logout-con">
                 <button class="btn btn-warning"><a href="#">Logout</a></button>
@@ -28,6 +20,14 @@
         </header>
         <div class="main">
             <aside>
+                <div class="user">
+                    <div class="photo">
+                        <img src="../images/user.jpg" alt="Admin">
+                    </div>
+                    <div class="username">
+                        <p>Admin</p>
+                    </div>
+                </div>
                 <div class="menu">
                     <ul>
                         <li><a href="#">Dashboard</a></li>
@@ -65,8 +65,9 @@
                 </div>
             </aside>
             <article>
-                <div>
+                <div class="title-con">
                     <h3>Profile</h3>
+                    <hr>
                 </div>
                 <div class="profile-con">
                     <div class="profile-pix">
@@ -76,17 +77,30 @@
                         <table>
                             <tbody>
                                 <tr>
-                                    <td>Name</td>
-                                    <td>John Doe</td>
+                                    <td>First Name</td>
+                                    <td><input type="text" name="first-name" placeholder="John" readonly></td>
                                 </tr>
                                 <tr>
-                                    <td>email</td>
+                                    <td>Other Name</td>
+                                    <td><input type="text" name="other-name" placeholder="" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name</td>
+                                    <td><input type="text" name="last-name" placeholder="Doe" readonly></td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail</td>
                                     <td>johndoe@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone Number</td>
+                                    <td><input type="text" name="phone" placeholder="08012345678" readonly></td>
                                 </tr>
                             </tbody>
                         </table>
+                        
                     </div>
-                    <div class="btn-con">
+                    <div class="upload-con">
                         <form action="#" enctype="multipart/form-data" >
                             <div>
                                 <label for="logo">Upload Profile Picture</label>
@@ -95,6 +109,11 @@
                             </div>
                         
                         </form>
+                    </div>
+                    <div class="btn-con">
+                        <input type="submit" class="btn btn-success" value="Update">
+                        <button id="edit-profile" class="btn btn-warning"><a href="#">Edit</a></button>
+                        <button id="cancel-edit" class="btn btn-warning hide"><a href="#">Cancel</a></button>
                     </div>
                 </div>
             </article>

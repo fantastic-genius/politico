@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "node"
+cache:
+  directories:
+    - "node-modules"
+after_success: 
+  - npm run coverage
+    

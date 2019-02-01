@@ -31,21 +31,19 @@ table{
     border-radius: 2rem;
     overflow: hidden;
     background-color: #dddd;
+    width: 90%;
 }
 
 header{
     background-color:#00bfff;
     width: 100%;
-    height: 10rem;
+    height: 8rem;
     color: 	#0000ff;
 }
 
-.app-name{
-    padding: 0 1rem;
-}
-
 .app-name h2{
-    font-size: 5rem;
+    font-size: 4rem;
+    padding: 1rem;
 }
 
 
@@ -60,8 +58,8 @@ header{
 }
 
 input, select, textarea{
-    width: 70%;
-    margin: 1rem 1rem;
+    width: 100%;
+    margin: 1rem 0;
     padding: 1rem;
     border: 1px solid #cccccc;
     border-radius: 0.5rem;  
@@ -75,12 +73,14 @@ textarea{
 label{
     padding: 1.2rem 1.2rem 0.2rem 0;
     display: inline-block;
-    width: 20%;
+    width: 100%;
     font-size: 1.6rem;
+    text-align: left;
 }
 
 input[type=submit]{
-    width: auto;   
+    width: auto; 
+    
 }
 
 .btn-con{
@@ -97,7 +97,9 @@ input[type=submit]{
 }
 
 .btn-success{
-    background-color:  #4CAF50;
+    background-color: #01579b;
+    border: 1px solid #01579b;
+    color: #00bfff;; 
 }
 
 .btn-danger{
@@ -111,11 +113,24 @@ input[type=submit]{
 }
 
 .home{
+    background: url('../../images/election.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home a{
+    color: #ffffff;
+}
+
+
+
+.overlay{
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background-color:#00bfff;
-    color: #0000ff;
+    background-color:#000000;
+    opacity: 0.8;
+    color: #ffffff;
 }
 
 .home-item-con{
@@ -134,7 +149,7 @@ input[type=submit]{
 }
 
 .home-btn button{
-    background-color: #01579b;
+    background-color: #000000;
     border: 1px solid #01579b;
     padding: 1rem 2rem;    
 }
@@ -160,7 +175,8 @@ input[type=submit]{
 
 .dashboard header h3{
     padding-left: 2rem;
-    margin: 1rem .5rem;
+    margin: 1.5rem .5rem;
+    font-size: 3rem;
 }
 
 .main aside{
@@ -172,8 +188,21 @@ input[type=submit]{
     color: 	#0000ff;
 }
 
+.main aside a:hover, .main aside a:active{
+    color: 	#ffffff;
+}
+.main aside li:hover, .main aside li:active{
+    color: 	#ffffff;
+}
+
+
 .main article{
-    min-width: 60%;
+    flex: 0 0 78vw;
+    text-align: -webkit-center;
+}
+
+.main .title-con{
+    text-align: -webkit-left;
 }
 
 .main article table{
@@ -182,7 +211,9 @@ input[type=submit]{
 }
 
 .main article h3{
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem 0;
+    font-size: 2.5rem;
+    margin-bottom: 0;
 }
 
 .main article td{
@@ -204,21 +235,24 @@ input[type=submit]{
 }
 
 .dashboard .user{
-    padding: 1rem .5rem 0 3rem;
+    padding: 1rem .5rem 0 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: auto;
+    text-align: center;
+    border-bottom: 1px solid #0000ff;
+}
+
+.dashboard .user p{
+    margin: 0;
+    padding: .8rem 0;
 }
 
 .dashboard .photo img{
-    width: 4rem;
-    height: 4rem;
+    width: 8rem;
+    height: 8rem;
     border: .1rem solid #01579b;
-    border-radius: 2rem;
-}
-
-.dashboard .username{
-    margin-left: 2rem;
+    border-radius: 4rem;
 }
 
 .dashboard header button{
@@ -248,7 +282,7 @@ aside ul{
 }
 
 aside li{
-    padding: .4rem 0 0 1.2rem;
+    padding: .8rem 0 0 1.2rem;
 }
 
 .menu{
@@ -298,7 +332,8 @@ aside li{
     color: #000000;
 }
 .main article form{
-    margin: 2rem;;
+    margin: 2rem;
+    text-align: left;
 }
 
 article p{
@@ -341,11 +376,11 @@ article p{
 }
 .profile-con{
     width: 80%;
-    height: 80%;
     border: .1rem solid #01579b;
     border-radius: 2rem;
     margin: 3rem 2rem;
     padding: 2rem;
+    text-align: left;
 }
 
 .dashboard .profile-con table{
@@ -372,6 +407,11 @@ article p{
     background-color: #dddddd;
 }
 
+.profile-con .upload-con input[type="submit"]{
+    font-size: 1.6rem;
+    padding: .5rem;
+}
+
 
 @media screen and (min-width: 800px){
     .item-box{
@@ -380,18 +420,30 @@ article p{
     }
 
     label{
-        width: 17%;
+        max-width: 20%;
+    }
+
+    .profile-con label{
+        max-width: 25%;
+    }
+
+    input, select, textarea{
+        width: 70%;
     }
 
     input[type=submit]{
-        width: 20rem;   
+        margin-left: 11%;   
+    }
+
+    .profile-con input[type=submit]{
+        margin-left: 22%;   
     }
 
     .main aside{
         flex: 0 0 20vw;
         background-color: #01579b;
         color: 	#00bfff;
-        padding-top: 3rem;
+        padding-top: 1rem;
     }
 
     .main{
@@ -403,16 +455,16 @@ article p{
         color: 	#00bfff;
     }
 
+    aside li {
+        padding: 1.6rem 0 0 1.2rem;
+    }
+
     .arrow{
         border-color: #00bfff;
     }
 
     .main article td{
         padding: 1.5rem;
-    }
-
-    .main article label{
-        min-width: 25%;
     }
 
     .dashboard header{
@@ -427,12 +479,26 @@ article p{
     }
 
     .dashboard .user{
-        margin: .8rem .5rem 0 0;
-        flex: 0 0 30vw;
+        border-bottom: 1px solid #00bfff;
+        text-align: center;
     }
 
     .dashboard header button{
         margin: 3rem 0.5rem;
+    }
+
+    .dashboard .photo img {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 5rem;
+    }
+
+    .profile-con .btn-con input{
+        margin-left: 0;
+    }
+
+    .profile-con .upload-con input[type="submit"]{
+        margin-left: 55%;
     }
 }
 
