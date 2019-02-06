@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Politico | Political Parties</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>POLITICO | Edit Party</title>
 
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -66,61 +66,30 @@
             </aside>
             <article>
                 <div class="title-con">
-                    <h3>Political Parties</h3>
+                    <h3>Edit Political Party</h3>
                     <hr>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Political Office Name</td>
-                            <td>Action</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>President</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>President</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>President</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form action="#" enctype="multipart/form-data">
+                    <div>
+                        <label for="party">Party Name</label>
+                        <input type="text" name="party" placeholder="Party Name">
+                    </div>
+                    <div>
+                        <label for="acronym">Party Name</label>
+                        <input type="text" name="acronym" placeholder="Party Name">
+                    </div>
+                    <div>
+                        <label for="hq-address">Headquarter Address</label>
+                        <input type="text" name="hq-address" placeholder="Headquarter Address">
+                    </div>
+                    <div>
+                        <label for="logo">Party Logo</label>
+                        <input type="file" name="logo">
+                    </div>
+                    <div class="btn-con">
+                        <input type="submit" class="btn btn-success" value="Edit Party">
+                    </div>
+                </form>
             </article>
         </div>
         <footer>
@@ -129,6 +98,5 @@
     </div>
 
     <script src="js/main.js"></script>
-    
 </body>
 </html>

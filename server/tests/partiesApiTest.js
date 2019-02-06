@@ -15,9 +15,9 @@ describe("Parties", () => {
             chai.request(app)
                 .post("/api/v1/parties")
                 .send({
-                    name : "peoples democratic party",
+                    name : "Alliance for Democracy",
                     hqAddress : "Wuse rd, Abuja",
-                    logoUrl : "http://apc.com/logo",
+                    logoUrl : "http://ad.com/logo",
                 })
                 .end((err, res) => {
                     should.not.exist(err);

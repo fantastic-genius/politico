@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Politico | Political Parties</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>POLITICO | Edit Office</title>
 
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -66,61 +66,27 @@
             </aside>
             <article>
                 <div class="title-con">
-                    <h3>Political Parties</h3>
+                    <h3>Edit Political Office</h3>
                     <hr>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <td>Political Office Name</td>
-                            <td>Action</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>President</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>President</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>President</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Governor</td>
-                            <td>
-                                <button class="btn btn-warning"><a href="edit_office.html">edit</a></button>
-                                <button class="btn btn-danger"><a href="#">delete</a></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form action="#">
+                    <div>
+                        <label for="office">Political Office Name</label>
+                        <input type="text" name="office" value="President">
+                    </div>
+                    <div>
+                        <label for="type">Type</label>
+                        <select name="type" id="type">
+                            <option value="federal">Federal</option>
+                            <option value="legislative">Legislative</option>
+                            <option value="state">State</option>
+                            <option value="local government">Local Government</option>
+                        </select>
+                    </div>
+                    <div class="btn-con">
+                        <input type="submit" class="btn btn-success" value="Edit Office">
+                    </div>
+                </form>
             </article>
         </div>
         <footer>
@@ -129,6 +95,5 @@
     </div>
 
     <script src="js/main.js"></script>
-    
 </body>
 </html>

@@ -50,7 +50,7 @@ header{
 .item-box{
     padding: 2rem;
     background-color: #f2f2f2;
-    margin: 5%;
+    margin: 10rem 5%;
 }
 
 .item-box .header{
@@ -112,17 +112,38 @@ input[type=submit]{
     border: 1px solid #e68a00;
 }
 
+.home-con {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .home{
     background: url('../../images/election.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.home-con .main{
+    flex: 0 0 100vh;
+}
+
+.home-con footer{
+    width: 100vw;
+    flex: 0 0 5vh;
+    background-color:#666666;
+    color: 	#ffffff;
+    font-size: 1.0rem;
+    text-align: center;
+    padding: 0.5rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+}
+
 .home a{
     color: #ffffff;
 }
-
-
 
 .overlay{
     width: 100vw;
@@ -139,9 +160,45 @@ input[type=submit]{
     text-align: center;
 }
 
+.home article{
+    width: 60%;
+    margin-left: 20%;
+}
+
 
 .home-item-con h1{
     font-size: 5rem;
+}
+
+.home-con header{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+
+.home-con .app-name{
+    flex: 1;
+}
+
+.home-con .home-link{
+    flex: 0 0 20vw;
+}
+.home-con .sign-btn{
+    flex: 0 0 30vw;
+    padding-top: 1.5rem;
+    padding-right: 1rem;
+    text-align: right;
+}
+
+.home-link a{
+    color: #0000ff;
+}
+
+.home-link span{
+    margin: 2.5rem .5rem;
+    font-size: 2rem;
 }
 
 .home-btn{
@@ -170,7 +227,10 @@ input[type=submit]{
     flex-direction: column;
     flex: 1;
     min-height: calc(100vh - 20vh);
+}
 
+.dashboard .main{
+    padding-top: 11rem;
 }
 
 .dashboard header h3{
@@ -231,7 +291,8 @@ input[type=submit]{
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
-    
+    position: fixed;
+    position: 0;
 }
 
 .dashboard .user{
@@ -412,11 +473,21 @@ article p{
     padding: .5rem;
 }
 
+.sign-btn span{
+    margin: 1.5rem .5rem;
+    font-size: 1rem;
+}
+
+.sign-btn button{
+    margin: 0.5rem 0;
+    padding: 1rem .5rem;
+    font-size: 1.2rem;
+}
 
 @media screen and (min-width: 800px){
     .item-box{
         width: 60% ;
-        margin: 5rem 20%;
+        margin: 15rem 20%;
     }
 
     label{
@@ -473,6 +544,10 @@ article p{
         flex: 0 0 auto;
     }
 
+    .dashboard .main{
+        padding-top: 8rem;
+    }
+
     .dashboard .title{
         margin: .8rem .5rem 0 0;
         flex: 1;
@@ -484,7 +559,7 @@ article p{
     }
 
     .dashboard header button{
-        margin: 3rem 0.5rem;
+        margin: 3rem 3rem;
     }
 
     .dashboard .photo img {
@@ -499,6 +574,22 @@ article p{
 
     .profile-con .upload-con input[type="submit"]{
         margin-left: 55%;
+    }
+
+    .home-link span{
+        margin: 2.5rem 2rem;
+        font-size: 2rem;
+    }
+    
+    .sign-btn span{
+        margin: 1.5rem 2rem;
+        font-size: 1rem;
+    }
+
+    .sign-btn button{
+        margin: 1rem .5rem;
+        padding: 1rem 1rem;
+        font-size: 1.6rem;
     }
 }
 
