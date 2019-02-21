@@ -1,0 +1,1620 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Politico
+  description: 'Application to cast votes during Election'
+  contact: {}
+host: politico-gen.herokuapp.com
+basePath: /api/v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /auth/signup:
+    post:
+      description: ''
+      summary: User Signup
+      tags:
+        - Misc
+      operationId: AuthSignupPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: firstname
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: lastname
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: othername
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: email
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: password
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: phoneNumber
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserSignup'
+          examples:
+            application/json:
+              status: 201
+              data:
+                - token: >-
+                    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiZG9lQHBvbGl0aWNvLmNvbSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNTUwNDkyNzMzLCJleHAiOjE1NTA1MzU5MzN9.P7QTUIdUYL5L9mXuUbn0IPiQtbQzWhleUmFMBjDE4l8
+                  user:
+                    id: 17
+                    firstname: Hamzah
+                    lastname: Abdulfattah
+                    othername: ''
+                    email: doe@politico.com
+                    phonenumber: 08026452400
+                    passporturl: null
+                    isadmin: false
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 401
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:25:33 GMT'
+            etag:
+              type: string
+              default: W/"191-esG5XoiPQqz4P/cEpALeNLe2cu4"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /auth/login:
+    post:
+      description: ''
+      summary: User Sign in
+      tags:
+        - Misc
+      operationId: AuthLoginPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: email
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: password
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserSignin'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - token: >-
+                    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhZG1pbkBwb2xpdGljby5jb20iLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNTUwNDkyNzU2LCJleHAiOjE1NTA1MzU5NTZ9.MEE-HUN4_5j_ELnrQvuKgLnN29w17BzyQVgM7jXPq2g
+                  user:
+                    id: 3
+                    firstname: admin
+                    lastname: admin
+                    othername: ''
+                    email: admin@politico.com
+                    phonenumber: 080123456789
+                    passporturl: null
+                    isadmin: true
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 395
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:25:56 GMT'
+            etag:
+              type: string
+              default: W/"18b-Up/U8kqQoFoQQ+dLcG1vXne+dpI"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /auth/reset:
+    post:
+      description: ''
+      summary: User Reset Password
+      tags:
+        - Misc
+      operationId: AuthResetPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: email
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserResetPassword'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - message: Check your email for password reset link
+                  email: admin@politico.com
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 107
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:26:32 GMT'
+            etag:
+              type: string
+              default: W/"6b-Xm2fw5fOMhBhe9nb9FNMO+16Qb8"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /parties:
+    post:
+      description: ''
+      summary: POST  Create a political party
+      tags:
+        - Misc
+      operationId: PartiesPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: name
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: hqAddress
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: logoUrl
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/POSTCreateapoliticalparty'
+          examples:
+            application/json:
+              status: 201
+              data:
+                - id: 5
+                  name: ARP
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 45
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:27:26 GMT'
+            etag:
+              type: string
+              default: W/"2d-QylyQwEEQQSpFvDD3N/mSClgrI4"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /parties/:
+    get:
+      description: ''
+      summary: GET Get all political parties
+      tags:
+        - Misc
+      operationId: PartiesGet
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GETGetallpoliticalparties'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - id: 2
+                  name: peoples democratic party
+                  logoUrl: 'http://apc.com/logo'
+                - id: 1
+                  name: All Democratic Party
+                  logoUrl: 'http://apc.com/logo'
+                - id: 4
+                  name: Aldc
+                  logoUrl: adp.com/logourl
+                - id: 3
+                  name: Adc
+                  logoUrl: adp.com/logourl
+                - id: 5
+                  name: ARP
+                  logoUrl: arp.com/logourl
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 320
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:28:06 GMT'
+            etag:
+              type: string
+              default: W/"140-mYrBt/c5KmCpoZWwNKoGhKXLKt4"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /parties/5:
+    get:
+      description: ''
+      summary: GET Get a political party
+      tags:
+        - Misc
+      operationId: Parties5Get
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GETGetapoliticalparty'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - id: 5
+                  name: ARP
+                  logoUrl: arp.com/logourl
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 73
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:32:49 GMT'
+            etag:
+              type: string
+              default: W/"49-xRQerIBvvtG7lWD0qp6XgoPJK1c"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /parties/5/name:
+    patch:
+      description: ''
+      summary: PATCH Edit a political party
+      tags:
+        - Misc
+      operationId: Parties5NamePatch
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: name
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/PATCHEditapoliticalparty'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - id: 5
+                  name: ANP
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 45
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:34:09 GMT'
+            etag:
+              type: string
+              default: W/"2d-inWLDDxnoXBs9rOcN4fuhLR8h0g"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /parties/3:
+    delete:
+      description: ''
+      summary: DELETE Delete a political party
+      tags:
+        - Misc
+      operationId: Parties3Delete
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: name
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: hqAddress
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: logoUrl
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/DELETEDeleteapoliticalparty'
+          examples:
+            application/json:
+              status: 200
+              message: Adc deleted from list of political parties
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 69
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:35:30 GMT'
+            etag:
+              type: string
+              default: W/"45-H+z4CdmM+JNbficDlEDq8Vvnx7o"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /offices:
+    post:
+      description: ''
+      summary: POST Create a political office
+      tags:
+        - Misc
+      operationId: OfficesPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: type
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: name
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/POSTCreateapoliticaloffice'
+          examples:
+            application/json:
+              status: 201
+              data:
+                - id: 8
+                  type: Local government
+                  name: Councillor
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 78
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:37:23 GMT'
+            etag:
+              type: string
+              default: W/"4e-NXrtuSbCuodp7/p06Im2sEBYlvM"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+    get:
+      description: ''
+      summary: GET Get all political offices
+      tags:
+        - Misc
+      operationId: OfficesGet
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GETGetallpoliticaloffices'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - id: 2
+                  type: Federal
+                  name: President
+                - id: 3
+                  type: Legislative
+                  name: Senator
+                - id: 4
+                  type: Local government
+                  name: Chairman
+                - id: 5
+                  type: Chairman
+                  name: Local government
+                - id: 6
+                  type: Chairman
+                  name: Local government
+                - id: 7
+                  type: Honorable
+                  name: federal
+                - id: 8
+                  type: Local government
+                  name: Councillor
+                - id: 1
+                  type: State
+                  name: Governor
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 416
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:38:54 GMT'
+            etag:
+              type: string
+              default: W/"1a0-LIPXLl1s9J5xvH0sGFQvz1pSGWw"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /offices/3:
+    get:
+      description: ''
+      summary: GET Get a political office
+      tags:
+        - Misc
+      operationId: Offices3Get
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GETGetapoliticaloffice'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - id: 3
+                  type: Legislative
+                  name: Senator
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 70
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:39:45 GMT'
+            etag:
+              type: string
+              default: W/"46-Lo55LVH/5070/hLadwDdIj4IKNc"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /offices/13/register:
+    post:
+      description: ''
+      summary: POST Register a candidate
+      tags:
+        - Misc
+      operationId: Offices13RegisterPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: office
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: party
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/POSTRegisteracandidate'
+          examples:
+            application/json:
+              status: 201
+              data:
+                - office: 8
+                  user: 17
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 46
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:43:04 GMT'
+            etag:
+              type: string
+              default: W/"2e-I+rSkOGAFPUySbVgSSEBQuJ+F2U"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /offices/1/result:
+    get:
+      description: ''
+      summary: GET Get election result for an office
+      tags:
+        - Misc
+      operationId: Offices1ResultGet
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/GETGetelectionresultforanoffice'
+          examples:
+            application/json:
+              status: 200
+              data:
+                - office: 1
+                  candidate: 1
+                  result: 2
+                - office: 1
+                  candidate: 2
+                  result: 0
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 103
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:43:35 GMT'
+            etag:
+              type: string
+              default: W/"67-4zCrsAAz+hRbnl9Kjdf6ChS0ga8"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /votes:
+    post:
+      description: ''
+      summary: POST User Vote
+      tags:
+        - Misc
+      operationId: VotesPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: office
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: candidate
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/POSTUserVote'
+          examples:
+            application/json:
+              status: 201
+              data:
+                - office: 1
+                  candidate: 1
+                  voter: 3
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 60
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:44:24 GMT'
+            etag:
+              type: string
+              default: W/"3c-LjhVasqhKdiVigilcR46xGmKUk8"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+  /petitions:
+    post:
+      description: ''
+      summary: POST User submit petition
+      tags:
+        - Misc
+      operationId: PetitionsPost
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: x-access-token
+          in: header
+          required: true
+          type: string
+          description: ''
+        - name: office
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: body
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: evidence
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/POSTUsersubmitpetition'
+          examples:
+            application/json:
+              status: 201
+              data:
+                - id: 1
+                  office: 1
+                  createdBy: 3
+                  text: I am not okay with the result
+                  evidence:
+                    - 'https://youtube.com/jguetht'
+                    - ' https://goolge.com/imgrl'
+          headers:
+            connection:
+              type: string
+              default: keep-alive
+            content-length:
+              type: string
+              default: 167
+            content-type:
+              type: string
+              default: application/json; charset=utf-8
+            date:
+              type: string
+              default: 'Mon, 18 Feb 2019 12:50:36 GMT'
+            etag:
+              type: string
+              default: W/"a7-eP19HrNcRY+VW2fiib1ayDJ/3MU"
+            server:
+              type: string
+              default: Cowboy
+            via:
+              type: string
+              default: 1.1 vegur
+            x-powered-by:
+              type: string
+              default: Express
+definitions:
+  UserSignup:
+    title: User Signup
+    example:
+      status: 201
+      data:
+        - token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiZG9lQHBvbGl0aWNvLmNvbSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNTUwNDkyNzMzLCJleHAiOjE1NTA1MzU5MzN9.P7QTUIdUYL5L9mXuUbn0IPiQtbQzWhleUmFMBjDE4l8
+          user:
+            id: 17
+            firstname: Hamzah
+            lastname: Abdulfattah
+            othername: ''
+            email: doe@politico.com
+            phonenumber: 08026452400
+            passporturl: null
+            isadmin: false
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum'
+    required:
+      - status
+      - data
+  Datum:
+    title: Datum
+    type: object
+    properties:
+      token:
+        example: >-
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTcsImVtYWlsIjoiZG9lQHBvbGl0aWNvLmNvbSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNTUwNDkyNzMzLCJleHAiOjE1NTA1MzU5MzN9.P7QTUIdUYL5L9mXuUbn0IPiQtbQzWhleUmFMBjDE4l8
+        type: string
+      user:
+        $ref: '#/definitions/User'
+    required:
+      - token
+      - user
+  User:
+    title: User
+    example:
+      id: 17
+      firstname: Hamzah
+      lastname: Abdulfattah
+      othername: ''
+      email: doe@politico.com
+      phonenumber: 08026452400
+      passporturl: null
+      isadmin: false
+    type: object
+    properties:
+      id:
+        example: 17
+        type: integer
+        format: int32
+      firstname:
+        example: Hamzah
+        type: string
+      lastname:
+        example: Abdulfattah
+        type: string
+      othername:
+        type: string
+      email:
+        example: doe@politico.com
+        type: string
+      phonenumber:
+        example: 08026452400
+        type: string
+      passporturl:
+        type: string
+      isadmin:
+        example: false
+        type: boolean
+    required:
+      - id
+      - firstname
+      - lastname
+      - othername
+      - email
+      - phonenumber
+      - isadmin
+  UserSignin:
+    title: User Signin
+    example:
+      status: 200
+      data:
+        - token: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJhZG1pbkBwb2xpdGljby5jb20iLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNTUwNDkyNzU2LCJleHAiOjE1NTA1MzU5NTZ9.MEE-HUN4_5j_ELnrQvuKgLnN29w17BzyQVgM7jXPq2g
+          user:
+            id: 3
+            firstname: admin
+            lastname: admin
+            othername: ''
+            email: admin@politico.com
+            phonenumber: 080123456789
+            passporturl: null
+            isadmin: true
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum'
+    required:
+      - status
+      - data
+  UserResetPassword:
+    title: User Reset Password
+    example:
+      status: 200
+      data:
+        - message: Check your email for password reset link
+          email: admin@politico.com
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum2'
+    required:
+      - status
+      - data
+  Datum2:
+    title: Datum2
+    type: object
+    properties:
+      message:
+        example: Check your email for password reset link
+        type: string
+      email:
+        example: admin@politico.com
+        type: string
+    required:
+      - message
+      - email
+  POSTCreateapoliticalparty:
+    title: POST Create A Political Party
+    example:
+      status: 201
+      data:
+        - id: 5
+          name: ARP
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum3'
+    required:
+      - status
+      - data
+  Datum3:
+    title: Datum3
+    type: object
+    properties:
+      id:
+        example: 5
+        type: integer
+        format: int32
+      name:
+        example: ARP
+        type: string
+    required:
+      - id
+      - name
+  GETGetallpoliticalparties:
+    title: GET All Political Parties
+    example:
+      status: 200
+      data:
+        - id: 2
+          name: peoples democratic party
+          logoUrl: 'http://apc.com/logo'
+        - id: 1
+          name: All Democratic Party
+          logoUrl: 'http://apc.com/logo'
+        - id: 4
+          name: Aldc
+          logoUrl: adp.com/logourl
+        - id: 3
+          name: Adc
+          logoUrl: adp.com/logourl
+        - id: 5
+          name: ARP
+          logoUrl: arp.com/logourl
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum4'
+    required:
+      - status
+      - data
+  Datum4:
+    title: Datum4
+    type: object
+    properties:
+      id:
+        example: 2
+        type: integer
+        format: int32
+      name:
+        example: peoples democratic party
+        type: string
+      logoUrl:
+        example: 'http://apc.com/logo'
+        type: string
+    required:
+      - id
+      - name
+      - logoUrl
+  GETGetapoliticalparty:
+    title: GET A Political Party
+    example:
+      status: 200
+      data:
+        - id: 5
+          name: ARP
+          logoUrl: arp.com/logourl
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum4'
+    required:
+      - status
+      - data
+  PATCHEditapoliticalparty:
+    title: PATCH Edit A Political Party
+    example:
+      status: 200
+      data:
+        - id: 5
+          name: ANP
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum3'
+    required:
+      - status
+      - data
+  DELETEDeleteapoliticalparty:
+    title: DELETE A Political Party
+    example:
+      status: 200
+      message: Adc deleted from list of political parties
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      message:
+        type: string
+    required:
+      - status
+      - message
+  POSTCreateapoliticaloffice:
+    title: POST Create A Political Office
+    example:
+      status: 201
+      data:
+        - id: 8
+          type: Local government
+          name: Councillor
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum7'
+    required:
+      - status
+      - data
+  Datum7:
+    title: Datum7
+    type: object
+    properties:
+      id:
+        example: 8
+        type: integer
+        format: int32
+      type:
+        example: Local government
+        type: string
+      name:
+        example: Councillor
+        type: string
+    required:
+      - id
+      - type
+      - name
+  GETGetallpoliticaloffices:
+    title: GET All Political Offices
+    example:
+      status: 200
+      data:
+        - id: 2
+          type: Federal
+          name: President
+        - id: 3
+          type: Legislative
+          name: Senator
+        - id: 4
+          type: Local government
+          name: Chairman
+        - id: 5
+          type: Chairman
+          name: Local government
+        - id: 6
+          type: Chairman
+          name: Local government
+        - id: 7
+          type: Honorable
+          name: federal
+        - id: 8
+          type: Local government
+          name: Councillor
+        - id: 1
+          type: State
+          name: Governor
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum7'
+    required:
+      - status
+      - data
+  GETGetapoliticaloffice:
+    title: GET A Political Office
+    example:
+      status: 200
+      data:
+        - id: 3
+          type: Legislative
+          name: Senator
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum7'
+    required:
+      - status
+      - data
+  POSTRegisteracandidate:
+    title: POST Register A Candidate
+    example:
+      status: 201
+      data:
+        - office: 8
+          user: 17
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum10'
+    required:
+      - status
+      - data
+  Datum10:
+    title: Datum10
+    type: object
+    properties:
+      office:
+        example: 8
+        type: integer
+        format: int32
+      user:
+        example: 17
+        type: integer
+        format: int32
+    required:
+      - office
+      - user
+  GETGetelectionresultforanoffice:
+    title: GET Election Result For An Office
+    example:
+      status: 200
+      data:
+        - office: 1
+          candidate: 1
+          result: 2
+        - office: 1
+          candidate: 2
+          result: 0
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum11'
+    required:
+      - status
+      - data
+  Datum11:
+    title: Datum11
+    type: object
+    properties:
+      office:
+        example: 1
+        type: string
+      candidate:
+        example: 1
+        type: integer
+        format: int32
+      result:
+        example: 2
+        type: integer
+        format: int32
+    required:
+      - office
+      - candidate
+      - result
+  POSTUserVote:
+    title: POST User Vote
+    example:
+      status: 201
+      data:
+        - office: 1
+          candidate: 1
+          voter: 3
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum12'
+    required:
+      - status
+      - data
+  Datum12:
+    title: Datum12
+    type: object
+    properties:
+      office:
+        example: 1
+        type: integer
+        format: int32
+      candidate:
+        example: 1
+        type: integer
+        format: int32
+      voter:
+        example: 3
+        type: integer
+        format: int32
+    required:
+      - office
+      - candidate
+      - voter
+  POSTUsersubmitpetition:
+    title: POST User submit petition
+    example:
+      status: 201
+      data:
+        - id: 1
+          office: 1
+          createdBy: 3
+          text: I am not okay with the result
+          evidence:
+            - 'https://youtube.com/jguetht'
+            - ' https://goolge.com/imgrl'
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum13'
+    required:
+      - status
+      - data
+  Datum13:
+    title: Datum13
+    type: object
+    properties:
+      id:
+        example: 1
+        type: integer
+        format: int32
+      office:
+        example: 1
+        type: integer
+        format: int32
+      createdBy:
+        example: 3
+        type: integer
+        format: int32
+      text:
+        example: I am not okay with the result
+        type: string
+      evidence:
+        example:
+          - 'https://youtube.com/jguetht'
+          - ' https://goolge.com/imgrl'
+        type: array
+        items:
+          type: string
+    required:
+      - id
+      - office
+      - createdBy
+      - text
+      - evidence
+tags:
+  - name: Misc
+    description: ''

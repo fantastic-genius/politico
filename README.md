@@ -17,6 +17,8 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 You need to install the following dependencies:
+
+Dependecies
 - express
 - babel-cli
 - babel-env
@@ -29,7 +31,17 @@ You need to install the following dependencies:
 - chai
 - chai-http
 - pg
+- babel-polyfill
+- jsonwebtoken
+- bscriptjs
 
+Development Dependencies
+- coveralls
+- cross-env
+- make-runnable
+- istanbul
+- mocha-lcov-reporter
+- nyc
 ```
 npm install express --save
 ```
@@ -48,3 +60,30 @@ If you possible make any changes, the application automatocally restarts itself
 ## Running the tests
 
 To run the test all you need is run "npm test" within the command line after navigating to that directory
+
+```
+npm test
+```
+
+## Creating Database
+
+The database used for this application is postgres. setup your postgres database and create you environment
+as contained in the sample.env file
+
+- To create the needed tables after setting up the application, run 
+
+```
+npm  run migrate
+```
+
+- To delete all the tables, run 
+
+```
+npm  run drop
+```
+
+- To create dummy data in your database after setting up the database and reated the tables, run
+
+```
+npm  run seeddb
+```

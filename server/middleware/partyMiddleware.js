@@ -1,8 +1,14 @@
 import {parties} from "../db/db"
+import partiesModel from "../model/partiesModel"
 class PartyMiddleware{
 
     createPartyMiddleware(req, res, next){
-        if(!req.body.name || !(req.body.name).trim()){
+        if(process.env.NODE_ENV !== 'test' && !req.user && !req.user.id && req.user.is_admin === false){
+            return res.status(401).send({
+                status: 401,
+                error: "You are not authorized to access this page" 
+            })
+        }else if(!req.body.name || !(req.body.name).trim()){
             return res.status(400).send({
                 status: 400,
                 error: "Party name not included in the data posted" 
@@ -34,21 +40,35 @@ class PartyMiddleware{
             })
         }
         
-        parties.map(party => {
-            if(party.name === req.body.name){
-                return res.status(412).send({
-                    status: 412,
-                    error: `${req.body.name} already existed` 
-                })
-            } 
+        const parties = partiesModel.selectAllParty()
+        parties.then(rows => {
+            rows.map(row => {
+                if((row.name).toLowerCase() == (req.body.name).toLowerCase()){
+                    return res.status(409).send({
+                        status: 409,
+                        error: `${req.body.name} already existed` 
+                    })
+                }
+            })
+
+            next(); 
+        }).catch(error => {
+            return res.status(500).send({
+                status: 500,
+                error: "Something went wrong, cannot process your request. Pleae try again"
+            })
         })
 
-        next();
     }
 
 
     editPartyMiddleware(req, res, next){
-        if(!req.params.id){
+        if(process.env.NODE_ENV !== 'test' && !req.user && !req.user.id  && req.user.is_admin === false){
+            return res.status(401).send({
+                status: 401,
+                error: "You are not authorized to access this page" 
+            })
+        }else if(!req.params.id){
             return res.status(400).send({
                 status: 400,
                 error: "Party id not provided" 
@@ -70,25 +90,31 @@ class PartyMiddleware{
             })
         }
 
-        parties.map(party => {
-            if(party.id !== parseInt(req.params.id)){
-                if(party.name === req.body.name && party.type === req.body.type){
-                    return res.status(412).send({
-                        status: 412,
+        const party = partiesModel.selectAllParty()
+        party.then(rows => {
+            rows.map(row => {
+                if((row.name).toLowerCase() === (req.body.name).toLowerCase()){
+                    return res.status(409).send({
+                        status: 409,
                         error: `${req.body.name} already existed` 
                     })
                 }
-            }
-        })
+            })
 
-        next()
+            next(); 
+        })
     }
 
     deletePartyMiddleware(req, res, next){
-        if(!req.params.id){
+        if(process.env.NODE_ENV !== 'test' && !req.user && !req.user.id && req.user.is_admin === false){
+            return res.status(401).send({
+                status: 401,
+                error: "You are not authorized to access this page" 
+            })
+        }else if(!req.params.id){
             return res.status(400).send({
                 status: 400,
-                error: "Party does not exist"
+                error: "Party not provided"
             })
         }else if(isNaN(parseInt(req.params.id))){
             return res.status(400).send({

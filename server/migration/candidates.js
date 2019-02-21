@@ -1,35 +1,32 @@
-import {Pool} from "pg"
-import dotenv from "dotenv"
+import pool from "../config"
+import debug from "debug"
 
-dotenv.config()
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
-})
+const debugg = debug('candidatesMigration:')
 
 pool.on('connect', () => {
-    console.log("Connected to the database")
+    debugg("Connected to the database")
 })
 
 const createCandidatesTable = () => {
     const queryText = `CREATE TABLE IF NOT EXISTS
         candidates(
-            id SERIAL PRIMARY KEY NOT NULL,
+            id SERIAL UNIQUE NOT NULL,
             office INT NOT NULL,
             party INT NOT NULL,
             candidate INT NOT NULL,
+            CONSTRAINT candidates_constraint PRIMARY KEY(office, candidate),
             FOREIGN KEY (office) REFERENCES offices (id) ON DELETE CASCADE,
             FOREIGN KEY (party) REFERENCES parties (id) ON DELETE CASCADE,
-            FOREIGN KEY (candidate) REFERENCES candidates (id) ON DELETE CASCADE
+            FOREIGN KEY (candidate) REFERENCES users (id) ON DELETE CASCADE
             )`
 
     pool.query(queryText)
         .then(res => {
-            console.log(res)
+            debugg(res)
             pool.end()
         })
         .catch(err => {
-            console.log(err)
+            debugg(err)
             pool.end()
         })
 }
@@ -39,17 +36,17 @@ const dropCandidatesTable = () => {
 
     pool.query(queryText)
         .then(res => {
-            console.log(res)
+            debugg(res)
             pool.end()
         })
         .catch(err => {
-            console.log(err)
+            debugg(err)
             pool.end()
         })
 }
 
 pool.on('remove', () => {
-    console.log("Client Removed")
+    debugg("Client Removed")
     process.exit(0)
 })
 

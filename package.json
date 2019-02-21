@@ -4,8 +4,8 @@
   "description": "voting application",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html --reporter=text mocha --require babel-register server/tests/*.js",
-    "start": "nodemon index.js --exec babel-node",
+    "test": "SET DEBUG=* & cross-env NODE_ENV=test npm run drop && npm run migrate && npm run seeddb && nyc --reporter=html --reporter=text mocha --require babel-register --require babel-polyfill server/tests/*.js",
+    "start": "SET DEBUG=* & nodemon index.js --exec babel-node",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "users": "babel-node ./server/migration/users.js createUsersTable",
     "parties": "babel-node ./server/migration/parties.js createPartiesTable",
@@ -13,7 +13,18 @@
     "candidates": "babel-node ./server/migration/candidates.js createCandidatesTable",
     "votes": "babel-node ./server/migration/votes.js createVotesTable",
     "petitions": "babel-node ./server/migration/petitions.js createPetitionsTable",
-    "migrate": "npm run users && npm run  parties && npm run offices && npm run  candidates && npm run  votes && npm run  petitions"
+    "dropusers": "babel-node ./server/migration/users.js dropUsersTable",
+    "dropparties": "babel-node ./server/migration/parties.js dropPartiesTable",
+    "dropoffices": "babel-node ./server/migration/offices.js dropOfficesTable",
+    "dropcandidates": "babel-node ./server/migration/candidates.js dropCandidatesTable",
+    "dropvotes": "babel-node ./server/migration/votes.js dropVotesTable",
+    "droppetitions": "babel-node ./server/migration/petitions.js dropPetitionsTable",
+    "seedotherdb": "babel-node ./server/migration/seed.js seedDatabase",
+    "seedcandidates": "babel-node ./server/migration/seed.js seedCandidates",
+    "seedvotes": "babel-node ./server/migration/seed.js seedVotes",
+    "migrate": "npm run users && npm run parties && npm run offices && npm run candidates && npm run votes && npm run petitions",
+    "drop": "npm run  droppetitions && npm run  dropvotes && npm run  dropcandidates && npm run dropoffices && npm run  dropparties && npm run dropusers",
+    "seeddb": "npm run seedotherdb && npm run seedcandidates && npm run seedvotes"
   },
   "repository": {
     "type": "git",
@@ -28,10 +39,12 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-env": "^2.4.1",
+    "babel-polyfill": "^6.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "cors": "^2.8.5",
     "debug": "^4.1.1",
     "dotenv": "^6.2.0",
     "eslint": "^5.12.1",
@@ -41,10 +54,13 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "pg": "^7.8.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "swagger-ui-express": "^4.0.2",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
+    "cross-env": "^5.2.0",
     "istanbul": "^0.4.5",
     "make-runnable": "^1.3.6",
     "mocha-lcov-reporter": "^1.3.0",

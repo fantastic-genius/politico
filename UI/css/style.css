@@ -99,7 +99,7 @@ input[type=submit]{
 .btn-success{
     background-color: #01579b;
     border: 1px solid #01579b;
-    color: #00bfff;; 
+    color: #00bfff; 
 }
 
 .btn-danger{
@@ -483,6 +483,46 @@ article p{
     padding: 1rem .5rem;
     font-size: 1.2rem;
 }
+
+.alert-success{
+    padding: 1rem;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.alert-info{
+    padding: 1rem;
+    background-color: #2196F3;
+    color: white;
+}
+
+.alert-warning{
+    padding: 1rem;
+    background-color: #ff9800;
+    color: white;
+}
+
+.alert-danger{
+    padding: 1rem;
+    background-color: #f44336;
+    color: white;
+}
+
+.alert-msg{
+    margin-top: 1rem;
+}
+
+.close-btn{
+    margin-left: 1.5rem;
+    color: #ffffff;
+    font-weight: bold;
+    float: right;
+    font-size: 2.2rem;
+    line-height: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 
 @media screen and (min-width: 800px){
     .item-box{

@@ -44,25 +44,59 @@ choices.forEach(choice => {
 const edit_profile = document.querySelector("#edit-profile");
 const cancel_edit = document.querySelector("#cancel-edit");
 
-edit_profile.addEventListener("click", (e) => {
-    const fields = document.querySelectorAll(".profile-box input");
 
-    fields.forEach(field => {
-        field.removeAttribute('readonly');
+if(edit_profile){
+    edit_profile.addEventListener("click", (e) => {
+        const fields = document.querySelectorAll(".profile-box input");
+    
+        fields.forEach(field => {
+            field.removeAttribute('readonly');
+        })
+    
+        cancel_edit.classList.remove('hide');
+        edit_profile.classList.add("hide")
     })
+}
 
-    cancel_edit.classList.remove('hide');
-    edit_profile.classList.add("hide")
-})
-
-
-cancel_edit.addEventListener("click", (e) => {
-    const fields = document.querySelectorAll(".profile-box input");
-
-    fields.forEach(field => {
-        field.setAttribute("readonly", true);
+if(cancel_edit){
+    cancel_edit.addEventListener("click", (e) => {
+        const fields = document.querySelectorAll(".profile-box input");
+    
+        fields.forEach(field => {
+            field.setAttribute("readonly", true);
+        })
+    
+        edit_profile.classList.remove('hide');
+        cancel_edit.classList.add("hide")
     })
+}
 
-    edit_profile.classList.remove('hide');
-    cancel_edit.classList.add("hide")
-})
+
+
+//Method to close alert message
+const closeAlert = () => {
+    const alertmsg = document.querySelector('.alert-msg')
+    alertmsg.classList.add('hide')
+}
+
+
+// //Method to display alert message
+// const displayMessage = ((type, msg) => {
+//     const alert = document.querySelector('#alert')
+//     let msgSpan = ''
+//     if(type == 'success'){
+//         msgSpan += `<div class='alert-msg alert-success'><span class='close-btn'>&times;</span><stong>Success!</strong> ${msg}</div>`
+//     }else if(type == 'warning'){
+//         msgSpan += `<span class='alert-msg alert-warning'><span class='close-btn'>&times;</span><stong>Warning!</strong> ${msg}</div>`
+//     }else if(type == 'info'){
+//         msgSpan += `<div class='alert-msg alert-info'><span class='close-btn'>&times;</span><stong>Info!</strong> ${msg}</div>`
+//     }else if(type == 'danger'){
+//         msgSpan += `<div class='alert-msg alert-danger'><span class='close-btn'>&times;</span><stong>Error!</strong> ${msg}</div>`
+//     }
+ 
+//     alert.innerHTML = msgSpan
+
+//     const closebtn = document.querySelector('.close-btn') 
+//     closebtn.addEventListener('click', closeAlert)
+// })
+

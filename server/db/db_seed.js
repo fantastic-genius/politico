@@ -1,9 +1,12 @@
+import bcrypt from "bcryptjs"
+
 const users = [
     {
         firstname: 'admin',
         lastname: 'admin',
         othername: '',
         email: 'admin@politico.com',
+        password: bcrypt.hashSync('password'),
         phoneNumber: '080123456789',
         isAdmin: true
     },
@@ -12,6 +15,7 @@ const users = [
         lastname: 'Pen',
         othername: '',
         email: 'max@politico.com',
+        password: bcrypt.hashSync('password'),
         phoneNumber: '080123456789',
         isAdmin: false
     },
@@ -20,8 +24,36 @@ const users = [
         lastname: 'Pearson',
         othername: '',
         email: 'mack@politico.com',
+        password: bcrypt.hashSync('password'),
         phoneNumber: '080123456789',
         isAdmin: false
+    },
+    {
+        firstname: 'Jack',
+        lastname: 'Man',
+        othername: '',
+        email: 'jack@politico.com',
+        password: bcrypt.hashSync('password'),
+        phoneNumber: '080123456789',
+        isAdmin: false
+    },
+    {
+        firstname: 'Alli',
+        lastname: 'Baba',
+        othername: '',
+        email: 'alli@politico.com',
+        password: bcrypt.hashSync('password'),
+        phoneNumber: '080123456789',
+        isAdmin: false
+    },
+    {
+        firstname: 'hamzah',
+        lastname: 'abdulfattah',
+        othername: '',
+        email: 'hamzah@politico.com',
+        password: bcrypt.hashSync('password'),
+        phoneNumber: '080123456789',
+        isAdmin: true
     }
 ]
 
@@ -33,7 +65,6 @@ const parties = [
         hqAddress : "Wuse rd, Abuja",
         logoUrl : "http://apc.com/logo",
     },
-
     {
         name : "peoples democratic party",
         hqAddress : "Wuse rd, Abuja",
@@ -62,6 +93,19 @@ const candidates = [
         party : 1,
         candidate: 2
     },
+    {
+        office: 1,
+        party : 2,
+        candidate: 3
+    }
 ]
 
-export {parties, offices};
+const votes = [
+    {
+        createdby: 2,
+        office: 1,
+        candidate: 1
+    }
+]
+
+export {users, parties, offices, candidates, votes};

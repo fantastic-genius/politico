@@ -1,14 +1,10 @@
-import {Pool} from "pg"
-import dotenv from "dotenv"
+import pool from "../config"
+import debug from "debug"
 
-dotenv.config()
-
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
-})
+const debugg = debug('partiesMigration:')
 
 pool.on('connect', () => {
-    console.log("Connected to the database")
+    debugg("Connected to the database")
 })
 
 const createPartiesTable = () => {
@@ -22,11 +18,11 @@ const createPartiesTable = () => {
 
     pool.query(queryText)
         .then(res => {
-            console.log(res)
+            debugg(res)
             pool.end()
         })
         .catch(err => {
-            console.log(err)
+            debugg(err)
             pool.end()
         })
     
@@ -38,17 +34,17 @@ const dropPartiesTable = () => {
 
     pool.query(queryText)
         .then(res => {
-            console.log(res)
+            debugg(res)
             pool.end()
         })
         .catch(err => {
-            console.log(err)
+            debugg(err)
             pool.end()
         })
 }
 
 pool.on('remove', () => {
-    console.log("Client Removed")
+    debugg("Client Removed")
     process.exit(0)
 })
 

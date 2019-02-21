@@ -1,21 +1,25 @@
 import app from '../../index'
-import {parties} from "../db/db"
+import jwt from 'jsonwebtoken'
+import dotenv from "dotenv"
 
 const chai = require("chai")
 const chaiHttp = require("chai-http")
-
-
 chai.use(chaiHttp)
-
 const should = chai.should();
+dotenv.config()
+const SECRET = process.env.SECRET
+const token = jwt.sign({id: 1, email: 'admin@politico.com', is_admin: true}, 
+                    SECRET,
+                    {expiresIn: '12h'})
 
 describe("Parties", () => {
     describe("POST /api/v1/parties", () => {
         it('should return newly created party data', (done) => {
             chai.request(app)
                 .post("/api/v1/parties")
+                .set("x-access-token", token)
                 .send({
-                    name : "Alliance for Democracy",
+                    name : "Alliance Democracy Progressive",
                     hqAddress : "Wuse rd, Abuja",
                     logoUrl : "http://ad.com/logo",
                 })
@@ -36,13 +40,13 @@ describe("Parties", () => {
         it('should return all the existing party data', (done) => {
             chai.request(app)
                 .get("/api/v1/parties")
+                .set("x-access-token", token)
                 .end((err, res) => {
                     should.not.exist(err);
                     res.status.should.equal(200);
                     res.type.should.equal("application/json");
                     res.body.should.be.a('object');
                     res.body.status.should.equal(200);
-                    res.body.data.length.should.equal(parties.length);
                     res.body.data[0].should.include.keys('id', 'name', 'logoUrl');
                     done();
                 })
@@ -52,14 +56,14 @@ describe("Parties", () => {
     describe("GET /api/v1/parties/<id>", () => {
         it('should return the data of the party requested', (done) => {
             chai.request(app)
-                .get("/api/v1/parties/2")
+                .get("/api/v1/parties/1")
+                .set("x-access-token", token)
                 .end((err, res) => {
                     should.not.exist(err);
                     res.status.should.equal(200);
                     res.type.should.equal("application/json");
                     res.body.should.be.a('object');
                     res.body.status.should.equal(200);
-                    res.body.data.length.should.equal(1);
                     res.body.data[0].should.include.keys('id', 'name', 'logoUrl');
                     done();
                 })
@@ -69,9 +73,10 @@ describe("Parties", () => {
     describe("PATCH /api/v1/parties/<id>/name", () => {
         it("should return the status 200 and the id and new name of the edited party", (done) => {
             chai.request(app)
-                .patch("/api/v1/parties/2/name")
+                .patch("/api/v1/parties/1/name")
+                .set("x-access-token", token)
                 .send({
-                    name: "Labour Party"
+                    name: "All Peoples Party"
                 })
                 .end((err, res) => {
                     should.not.exist(err)
@@ -89,6 +94,7 @@ describe("Parties", () => {
         it("Should return message that about the party deleted and status 200", (done) => {
             chai.request(app)
                 .delete("/api/v1/parties/2")
+                .set("x-access-token", token)
                 .end((err, res) => {
                     should.not.exist(err)
                     res.status.should.equal(200)
