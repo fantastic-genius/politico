@@ -79,24 +79,13 @@ const closeAlert = () => {
     alertmsg.classList.add('hide')
 }
 
+//Logout Functionality
+const logout = () => {
+    sessionStorage.clear()
+    window.location.href = '../index.html'
+}
 
-// //Method to display alert message
-// const displayMessage = ((type, msg) => {
-//     const alert = document.querySelector('#alert')
-//     let msgSpan = ''
-//     if(type == 'success'){
-//         msgSpan += `<div class='alert-msg alert-success'><span class='close-btn'>&times;</span><stong>Success!</strong> ${msg}</div>`
-//     }else if(type == 'warning'){
-//         msgSpan += `<span class='alert-msg alert-warning'><span class='close-btn'>&times;</span><stong>Warning!</strong> ${msg}</div>`
-//     }else if(type == 'info'){
-//         msgSpan += `<div class='alert-msg alert-info'><span class='close-btn'>&times;</span><stong>Info!</strong> ${msg}</div>`
-//     }else if(type == 'danger'){
-//         msgSpan += `<div class='alert-msg alert-danger'><span class='close-btn'>&times;</span><stong>Error!</strong> ${msg}</div>`
-//     }
- 
-//     alert.innerHTML = msgSpan
-
-//     const closebtn = document.querySelector('.close-btn') 
-//     closebtn.addEventListener('click', closeAlert)
-// })
-
+const logoutBtn = document.querySelector('#logout')
+if(logoutBtn){
+    logoutBtn.addEventListener('click', logout)
+}

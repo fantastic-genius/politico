@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>POLITICO | Apply</title>
+    <title>POLITICO | Register Candidate</title>
 
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -12,10 +12,10 @@
     <div class="container dashboard">
         <header>
             <div class="title">
-                <h3>User Dashboard</h3>
+                <h3>Admin Dashboard</h3>
             </div>
             <div class="logout-con">
-                <button class="btn btn-warning"><a href="#">Logout</a></button>
+                <button id="logout" class="btn btn-warning"><a href="#">Logout</a></button>
             </div>
         </header>
         <div class="main">
@@ -30,20 +30,35 @@
                 </div>
                 <div class="menu">
                     <ul>
-                        <li><a href="user_dashboard.html">Dashboard</a></li>
-                        <li><a href="vote.html">Vote</a></li>
-                        <li><a href="view_parties.html">Parties</a></li>
-                        <li><a href="my_votes.html">My Votes</a></li>
-                        <li><a href="apply.html">Apply</a></li>
-                        <li><a href="petition.html">Submit Petition</a></li>
+                        <li><a href="admin_dashboard.html">Dashboard</a></li>
+                        <li class="treeview">
+                            <a href="#">
+                                <span>Political Parties</span>
+                                <span class="to-right"><i class="arrow down"></i></span>
+                            </a>
+                            <ul class="treeview-menu hide">
+                                <li><a href="political-parties.html">View Parties</a></li>
+                                <li><a href="add_party.html">Add Party</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <span>Political Offices</span>
+                                <span class="to-right"><i class="arrow down"></i></span>
+                            </a>
+                            <ul class="treeview-menu hide">
+                                <li><a href="political_offices.html">View Offices</a></li>
+                                <li><a href="add_office.html">Add Office</a></li>
+                            </ul>
+                        </li>
                         <li class="treeview">
                             <a href="#">
                                 <span>Settings</span>
                                 <span class="to-right"><i class="arrow down"></i></span>
                             </a>
                             <ul class="treeview-menu hide">
-                                <li><a href="profile.html">Update Profile</a></li>
-                                <li><a href="change_password.html">Change Password</a></li>
+                                <li><a href="admin_profile.html">Update Profile</a></li>
+                                <li><a href="admin_change_password.html">Change Password</a></li>
                             </ul>
                         </li>
                     </ul>
