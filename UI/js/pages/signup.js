@@ -20,13 +20,9 @@ const displayMessage = ((type, msg) => {
 
 
 ///----####---SIGNUP START----####----///
+const signupForm = document.querySelector('#signup-form')
 const signUp = (e) => {
     e.preventDefault();
-    const firstname = document.querySelector('#first-name').value
-    const othername = document.querySelector('#other-name').value
-    const lastname = document.querySelector('#last-name').value
-    const email = document.querySelector('#email').value
-    const phoneNumber = document.querySelector('#phone').value
     const password = document.querySelector('#password').value
     const passwordconf = document.querySelector('#password-conf').value
 
@@ -35,20 +31,13 @@ const signUp = (e) => {
     }else if(password !== passwordconf){
         displayMessage('danger', 'Passwords provided doesn\'t not match')
     }else{
+        const formData = new URLSearchParams(new FormData(signupForm))
         fetch('https://politico-gen.herokuapp.com/api/v1/auth/signup', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                firstname,
-                othername,
-                lastname,
-                email,
-                password,
-                phoneNumber
-            })
+            body: formData
         }).then(res => {
             return res.json()
         }).then(data => {
@@ -71,10 +60,8 @@ const signUp = (e) => {
 
 }
 
-const signupBtn = document.querySelector('#signup')
-
-if(signupBtn){
-    signupBtn.addEventListener('click', signUp)
+if(signupForm){
+    signupForm.addEventListener('submit', signUp)
 }
 
 ///----####---SIGNUP END----####----///

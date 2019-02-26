@@ -1,11 +1,9 @@
-import {parties} from "../db/db"
 import partiesModel from "../model/partiesModel"
 
 class PartyController{
     createParty(req, res){
-
-        const body = req.body;
-        const {name, hqAddress, logoUrl} = body;
+        //const logoUrl = req.image.url
+        const {name, hqAddress, logoUrl } = req.body;
         const values = [name, hqAddress, logoUrl]
         const party = partiesModel.createParty(values)
         party.then(rows => {

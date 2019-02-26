@@ -19,8 +19,9 @@ const displayMessage = ((type, msg) => {
 })
 
 ///----####---LOGIN START----####----///
+const loginForm = document.querySelector('#login-form')
 const login = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const email = document.querySelector('#email').value
     const password = document.querySelector('#password').value
 
@@ -29,16 +30,13 @@ const login = (e) => {
     }else if(password.length == 0  || (password.trim()).length == 0){
         displayMessage('danger', 'Password not provided')
     }else{
+        const formData = new URLSearchParams(new FormData(loginForm))
         fetch('https://politico-gen.herokuapp.com/api/v1/auth/login', {
             method: 'POST',
             headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                email,
-                password
-            })
+            body: formData
         }).then(res => {
             return res.json()
         }).then(data => {
@@ -55,6 +53,7 @@ const login = (e) => {
                 sessionStorage.setItem('email', data.data[0].user.email)
                 sessionStorage.setItem('user_name', name)
                 sessionStorage.setItem('passport_url', passporturl)
+                sessionStorage.setItem('is_admin', isadmin)
                 if(isadmin === true){
                     window.location.replace('admin_dashboard.html')
                 }else{
@@ -74,8 +73,8 @@ const login = (e) => {
 
 const loginBtn = document.querySelector('#login')
 
-if(loginBtn){
-    loginBtn.addEventListener('click', login)
+if(loginForm){
+    loginForm.addEventListener('submit', login)
 }
 
 ///----####---LOGIN END----####----///

@@ -70,22 +70,23 @@
                     <h3>Add Political Party</h3>
                     <hr>
                 </div>
-                <form action="#" enctype="multipart/form-data">
+                <div id="alert"></div>
+                <form id="add-party" enctype="multipart/form-data">
                     <div>
-                        <label for="party">Party Name</label>
-                        <input type="text" name="party" placeholder="Party Name">
+                        <label for="name">Party Name</label>
+                        <input type="text" name="name" placeholder="Party Name">
                     </div>
-                    <div>
+                    <!--div>
                         <label for="acronym">Party Name</label>
                         <input type="text" name="acronym" placeholder="Party Name">
+                    </div-->
+                    <div>
+                        <label for="hqAddress">Headquarter Address</label>
+                        <input type="text" name="hqAddress" placeholder="Headquarter Address">
                     </div>
                     <div>
-                        <label for="hq-address">Headquarter Address</label>
-                        <input type="text" name="hq-address" placeholder="Headquarter Address">
-                    </div>
-                    <div>
-                        <label for="logo">Party Logo</label>
-                        <input type="file" name="logo">
+                        <label for="image">Party Logo</label>
+                        <input type="file" name="image">
                     </div>
                     <div class="btn-con">
                         <input type="submit" class="btn btn-success" value="Add Party">
@@ -99,5 +100,6 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/pages/party.js" type="text/javascript"></script>
 </body>
 </html>

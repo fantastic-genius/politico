@@ -1,4 +1,3 @@
-import {offices} from "../db/db"
 import candidatesModel from "../model/candidatesModel"
 import officesModel from "../model/officesModel"
 import votesModel from "../model/votesModel"

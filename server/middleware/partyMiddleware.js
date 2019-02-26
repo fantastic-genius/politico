@@ -3,6 +3,9 @@ import partiesModel from "../model/partiesModel"
 class PartyMiddleware{
 
     createPartyMiddleware(req, res, next){
+        if(req.image){
+            req.body.logoUrl = req.image.url 
+        }
         if(process.env.NODE_ENV !== 'test' && !req.user && !req.user.id && req.user.is_admin === false){
             return res.status(401).send({
                 status: 401,

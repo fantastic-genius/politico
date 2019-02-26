@@ -1,4 +1,4 @@
-import pool from "../config"
+import {pool} from "../config"
 import debug from "debug"
 
 const debugg = debug('candidatesmodel:')
