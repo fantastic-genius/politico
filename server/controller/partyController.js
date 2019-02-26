@@ -40,9 +40,11 @@ class PartyController{
                 rows.map(row => {
                     let {id, name} = row
                     let logoUrl = row.logourl
+                    let hqAddress = row.hqaddress
                     let cur_data = {
                         id,
                         name,
+                        hqAddress,
                         logoUrl
                     }
                     data.push(cur_data)
