@@ -55,7 +55,7 @@ const addParty = (e) => {
             return res.json()
         }).then(data => {
             if(data.status == 201){
-                const msg = `You have successfuly created a new party`
+                const msg = `You have successfuly created ${data.data[0].name} party`
                 displayMessage('success', msg)
 
                 const inputFields = document.querySelectorAll('input')
