@@ -69,7 +69,18 @@
                     <h3>Political Office Application</h3>
                     <hr>
                 </div>
-                <form action="#">
+                <div id="alert"></div>
+                <form id="user-search-form">
+                    <div>
+                        <label for="email">Politician Email</label>
+                        <input type="text" id="email" name="email" placeholder="Input Politician Email">
+                        <input type="hidden" id="user-id" name="user-id">
+                    </div>
+                    <div class="btn-con">
+                        <input type="button" id="search-btn" class="btn btn-success" value="Search User">
+                    </div>
+                </form>
+                <form id="register-form">
                     <div>
                         <label for="party">Party</label>
                         <select name="party" id="party">
@@ -85,7 +96,7 @@
                         </select>
                     </div>
                     <div class="btn-con">
-                        <input type="submit" class="btn btn-success" value="Apply">
+                        <input type="submit" id="register-btn" class="btn btn-success" value="Register" disabled>
                     </div>
                 </form>
             </article>
@@ -96,5 +107,6 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/pages/office.js"></script>
 </body>
 </html>

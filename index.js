@@ -6,13 +6,13 @@ import officeRouter from "./server/routes/officeRoutes"
 import authRouter from "./server/routes/authRoutes"
 import voteRouter from "./server/routes/voteRoutes"
 import petitionRouter from "./server/routes/petitionRoutes"
+import userRouter from "./server/routes/userRoutes"
 import swaggerUi from  "swagger-ui-express"
 import YAML from "yamljs"
 import cors from 'cors'
  
 const PORT = 5000
 const app = express()
-const router = express.Router()
 const debugg = debug('app:')
 const swaggerDocument = YAML.load("./politico-api.yaml")
 app.use(cors())
@@ -23,6 +23,7 @@ app.use(officeRouter)
 app.use(authRouter)
 app.use(voteRouter)
 app.use(petitionRouter)
+app.use(userRouter)
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 if(!module.parent){

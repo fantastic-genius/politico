@@ -57,6 +57,7 @@ if(office_form){
 
 ///----####---CREATE AN OFFICE END----####----///
 
+
 ///----####---GET OFFICES START----####----///
 const offices_tbl = document.querySelector('#offices')
 if(offices_tbl){
@@ -94,3 +95,69 @@ if(offices_tbl){
 }
 
 ///----####---GET OFFICES END----####----///
+
+
+///----####---REGISTER CANDIDATE START----####----///
+const register_form = document.querySelector('#register-form')
+
+const registerCandidate = (e) => {
+    e.preventDefault()
+    const formData = new URLSearchParams(new FormData(register_form))
+    const user_id = document.querySelector('#user-id').value
+    fetch(`https://politico-gen.herokuapp.com/api/v1/offices/${user_id}/register`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        },
+        body: formData
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 201){
+            document.querySelector('#user-id').value = ''
+            document.querySelector('#email').value = ''
+            const register_btn = document.querySelector('#register-btn')
+            register_btn.setAttribute('disabled', 'disabled')
+            displayMessage('success', 'Candidate successfully registered')
+        }else{
+            displayMessage('danger', data.error)
+        }
+    })
+}
+
+const searchUser = (e) => {
+    e.preventDefault()
+    const email = document.querySelector('#email').value
+    if(!email || ! email.trim()){
+        displayMessage('danger', "User email not provided")
+    }else{
+        fetch(`https://politico-gen.herokuapp.com/api/v1/users/${email}/email`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'x-access-token': token
+            }
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            if(data.status == 200){ 
+                document.querySelector('#user-id').value = data.data[0].id
+                const register_btn = document.querySelector('#register-btn')
+                register_btn.removeAttribute('disabled')
+                register_form.addEventListener('submit', registerCandidate)
+
+                displayMessage('success', 'User was found. Register button enabled for registration of the politician searched for')
+            }else{
+                displayMessage('danger', data.error)
+            }
+        })
+    }
+
+}
+
+if(register_form){
+    const search_btn = document.querySelector('#search-btn')
+    search_btn.addEventListener('click', searchUser)
+}
+///----####---REGISTER CANDIDATE END----####----///

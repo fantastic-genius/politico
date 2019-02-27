@@ -78,7 +78,7 @@ label{
     text-align: left;
 }
 
-input[type=submit]{
+input[type=submit], input[type=button]{
     width: auto; 
     
 }
@@ -542,7 +542,7 @@ article p{
         width: 70%;
     }
 
-    input[type=submit]{
+    input[type=submit], input[type=button]{
         margin-left: 11%;   
     }
 
