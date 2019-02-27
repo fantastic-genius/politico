@@ -107,7 +107,7 @@ if(parties_tbl){
                             <td>${party.hqAddress}</td>
                             <td>
                                 <button class="edit btn btn-warning" data-id="${party.id}">edit</button>
-                                <button class="delete btn btn-danger" data-id="${party.id}"><a href="#">delete</a></button>
+                                <button class="delete btn btn-danger" data-id="${party.id}">delete</button>
                             </td>
                         </tr>`
             })
@@ -118,6 +118,11 @@ if(parties_tbl){
                     const id = edit_btn.dataset.id
                     window.location.href = 'edit_party.html?id='+id
                 })
+            })
+
+            const delete_btns = document.querySelectorAll('.delete')
+            delete_btns.forEach(delete_btn => {
+                delete_btn.addEventListener('click', deleteParty)
             })
             
         }else{
@@ -189,3 +194,31 @@ if(edit_form){
 }
 
 ///----####---EDIT PARTY END----####----///
+
+///----####---DELETE PARTY START----####----///
+
+const deleteParty = (e) => {
+    const target = e.target
+    const party_id = target.dataset.id
+    fetch(`https://politico-gen.herokuapp.com/api/v1/parties/${party_id}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token,
+        }
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            displayMessage('success', data.message)
+            setTimeout(window.location.reload(), 5000)
+        }else{
+            displayMessage('error', data.error)
+        }
+        
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+///----####---DELETE PARTY START----####----///
