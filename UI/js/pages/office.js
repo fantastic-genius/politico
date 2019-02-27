@@ -159,5 +159,51 @@ const searchUser = (e) => {
 if(register_form){
     const search_btn = document.querySelector('#search-btn')
     search_btn.addEventListener('click', searchUser)
+
+    fetch('https://politico-gen.herokuapp.com/api/v1/parties', {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        }
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            const parties = data.data
+            const party_select = document.querySelector('#party-select')
+            let options = '<option>Select a party</option>'
+            parties.forEach(party => {
+                options += `<option value="${party.id}">${party.name}</option>`
+            })
+
+            party_select.innerHTML = options
+        }else{
+            displayMessage('danger', data.error)
+        }
+    })
+
+    fetch('https://politico-gen.herokuapp.com/api/v1/offices', {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        }
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            const offices = data.data
+            const office_select = document.querySelector('#office-select')
+            let options = '<option>Select an office</option>'
+            offices.forEach(office => {
+                options += `<option value="${office.id}">${office.name}</option>`
+            })
+
+            office_select.innerHTML = options
+        }else{
+            displayMessage('danger', data.error)
+        }
+    })
 }
 ///----####---REGISTER CANDIDATE END----####----///
