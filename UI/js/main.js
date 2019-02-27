@@ -5,7 +5,6 @@ treeviews.forEach(treeview => {
         let treeview_children = treeview.childNodes;
         let treeview_menu = treeview_children[3];
         treeview_menu.classList.toggle('hide');
-        console.log(treeview_menu);
         let sub_menus = document.querySelectorAll('.treeview-menu');
         
         sub_menus.forEach(sub_menu => {

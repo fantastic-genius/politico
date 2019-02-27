@@ -56,3 +56,41 @@ if(office_form){
 }
 
 ///----####---CREATE AN OFFICE END----####----///
+
+///----####---GET OFFICES START----####----///
+const offices_tbl = document.querySelector('#offices')
+if(offices_tbl){
+    fetch('https://politico-gen.herokuapp.com/api/v1/offices', {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        }
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            const tbl_body = document.querySelector('#offices > tbody')
+            let rows = ''
+            const offices = data.data
+            offices.forEach(office => {
+                rows += `<tr>
+                            <td>${office.name}</td>
+                            <td>${office.type}</td>
+                            <td>
+                                <button class="edit btn btn-warning"><a href="edit_office.html?id=${office.id}">edit</a></button>
+                                <button class="delete btn btn-danger" data-id="${office.id}">delete</button>
+                            </td>
+                        </tr>`
+            })
+
+            tbl_body.innerHTML = rows
+        }else{
+            displayMessage('danger', data.error)
+        }
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+///----####---GET OFFICES END----####----///
