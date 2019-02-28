@@ -52,6 +52,7 @@ const login = (e) => {
                 sessionStorage.setItem('token', data.data[0].token)
                 sessionStorage.setItem('email', data.data[0].user.email)
                 sessionStorage.setItem('user_name', name)
+                sessionStorage.setItem('user_id', data.data[0].user.id)
                 sessionStorage.setItem('passport_url', passporturl)
                 sessionStorage.setItem('is_admin', isadmin)
                 if(isadmin === true){

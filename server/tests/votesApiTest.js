@@ -36,7 +36,7 @@ describe("Votes", () => {
         })
     })
 
-    describe("GET /api/v1/offices/<id>/result", () => {
+    describe("GET /api/v1/offices/<officeid>/result", () => {
         it('should return the result of election for an office', (done) => {
             chai.request(app)
                 .get("/api/v1/offices/1/result")
@@ -48,6 +48,24 @@ describe("Votes", () => {
                     res.body.should.be.a('object');
                     res.body.status.should.equal(200);
                     res.body.data[0].should.include.keys('office', 'candidate', 'result');
+                    done();
+                })
+        })
+    })
+
+
+    describe("GET /api/v1/votes/<userid>/user", () => {
+        it("Should return status and user votes details", (done) => {
+            chai.request(app)
+                .get("/api/v1/votes/1/user")
+                .set("x-access-token", token)
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.status.should.equal(200);
+                    res.type.should.equal("application/json");
+                    res.body.should.be.a('object');
+                    res.body.status.should.equal(200);
+                    res.body.data[0].should.include.keys('officeid', 'officename', 'firstname', 'lastname', 'othername', 'passporturl', 'partyname', 'logourl');
                     done();
                 })
         })

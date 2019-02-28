@@ -117,7 +117,7 @@ class AuthMiddleware{
             try {
                 const decoded_token = await jwt.verify(token, process.env.SECRET)
                 const cur_date_in_secs = Date.now()/1000
-                
+                console.log(decoded_token.exp)
                 if(decoded_token.exp < cur_date_in_secs){
                     return res.status(401).send({
                         status: 401,
@@ -140,10 +140,23 @@ class AuthMiddleware{
                     })
                 }
             } catch (error) {
-                return res.status(500).send({
-                    status: 500,
-                    error: "Something went wrong, cannot process your request. Please try again"
-                })
+                if(error.name == 'TokenExpiredError'){
+                    return res.status(400).send({
+                        status: 400,
+                        error: "Session expired, pls login again"
+                    })
+                }else if(error.name == 'JsonWebTokenError'){
+                    return res.status(401).send({
+                        status: 401,
+                        error: "Invalid token provided. You are not authorized to access this page"
+                    })
+                }else{
+                    return res.status(500).send({
+                        status: 500,
+                        error: "Something went wrong, cannot process your request. Please try again"
+                    })
+                }
+                
             }
         }
     }

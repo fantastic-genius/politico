@@ -184,6 +184,30 @@ class OfficeController{
             })
         })
     }
+
+
+    getOfficeCandidates(req, res){
+        const values = [req.params.id]
+        const candidates = candidatesModel.selectCandidatesByOffice(values)
+        candidates.then(rows => {
+            if(rows.length > 0){
+                return res.status(200).send({
+                    status: 200,
+                    data: rows
+                })
+            }else{
+                return res.status(404).send({
+                    status: 404,
+                    error: "No candidate exist for this office"
+                })
+            }
+        }).catch(error => {
+            return res.status(500).send({
+                status: 500,
+                error: "Something went wrong, cannot process your request. Pleae try again"
+            })
+        })
+    }
     
 }
 

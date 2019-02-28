@@ -40,7 +40,12 @@ class CandidatesModel{
     }
 
     async selectCandidatesByOffice(officeVal){
-        const query = 'SELECT * FROM candidates WHERE office=$1'
+        const query = `SELECT candidates.id, candidates.candidate AS userId, users.firstname, users.lastname, users.othername, 
+                    users.passporturl, parties.name AS partyName, parties.logourl
+                    FROM candidates
+                    INNER JOIN users ON users.id=candidates.candidate
+                    INNER JOIN parties ON parties.id=candidates.party
+                    WHERE candidates.office=$1`
         try {
             const {rows}  = await pool.query(query, officeVal)
             return rows

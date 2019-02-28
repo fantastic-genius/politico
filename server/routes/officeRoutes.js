@@ -11,5 +11,6 @@ router.get(officeVersionedApi, authMiddleware.verifyToken, officeController.getA
 router.get(`${officeVersionedApi}:id`, authMiddleware.verifyToken, officeController.getAnOffice)
 router.post(`${officeVersionedApi}:id/register`, authMiddleware.verifyToken, officeMiddleware.createCandidateMiddleware, officeController.createCandidate)
 router.get(`${officeVersionedApi}:id/result`, authMiddleware.verifyToken, officeMiddleware.getOfficeVotesMiddleware, officeController.getOfficeVotes)
+router.get(`${officeVersionedApi}:id/candidates`, authMiddleware.verifyToken, officeMiddleware.getCandidatesByOfficeMiddleware, officeController.getOfficeCandidates)
 
 export default router;

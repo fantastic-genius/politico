@@ -53,15 +53,15 @@
                     <h3>Vote Choice Aspirant</h3>
                     <hr>
                 </div>
+                <div id="alert"></div>
                 <div class="select-con">
                     <label for="office">Political Office</label>
-                    <select name="office" id="office">
-                        <option value="1">President</option>
-                        <option value="2">Governor</option>
+                    <select name="office" id="office-select">
+                        <option>Select an Office</option>
                     </select>
                 </div>
                 <div>
-                    <table>
+                    <table id="candidates-table">
                         <thead>
                             <tr>
                                 <td></td>
@@ -73,36 +73,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input type="checkbox" class="choice" name="choice"></td>
-                                <td><img src="../images/user.jpg" alt="Pol"></td>
-                                <td><a href="aspirant_profile.html">Muhammad Buhari</a></td>
-                                <td>APC</td>
-                                <td><img src="../images/apc-logo.jpg" alt="APC"></td>
-                                <td>
-                                    <button class="btn btn-warning hide"><a href="#">Vote</a></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="choice" name="choice "></td>
-                                <td><img src="../images/user.jpg" alt="Pol"></td>
-                                <td><a href="aspirant_profile.html">Muhammad Buhari</a></td>
-                                <td>APC</td>
-                                <td><img src="../images/apc-logo.jpg" alt="APC"></td>
-                                <td>
-                                    <button class="btn btn-warning hide"><a href="#">Vote</a></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="choice" name="choice"></td>
-                                <td><img src="../images/user.jpg" alt="Pol"></td>
-                                <td><a href="aspirant_profile.html">Muhammad Buhari</a></td>
-                                <td>APC</td>
-                                <td><img src="../images/apc-logo.jpg" alt="APC"></td>
-                                <td>
-                                    <button class="btn btn-warning hide"><a href="#">Vote</a></button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>    
@@ -113,5 +83,6 @@
         </footer>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/pages//user.js"></script>
 </body>
 </html>

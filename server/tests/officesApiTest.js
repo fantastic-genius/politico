@@ -90,4 +90,21 @@ describe("Offices", () => {
                 })
         })
     })
+
+    describe("GET /api/v1/offices/<officeid>/candidates", () => {
+        it('should registered candidates for an office', (done) => {
+            chai.request(app)
+                .get("/api/v1/offices/1/candidates")
+                .set("x-access-token", token)
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.status.should.equal(200);
+                    res.type.should.equal("application/json");
+                    res.body.should.be.a('object');
+                    res.body.status.should.equal(200);
+                    res.body.data[0].should.include.keys('id', 'userid', 'firstname', 'lastname', 'othername', 'passporturl', 'partyname', 'logourl');
+                    done();
+                })
+        })
+    })
 })
