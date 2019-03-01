@@ -53,18 +53,24 @@
                     <h3>Submit Election Petition</h3>
                     <hr>
                 </div>
-                <form action="#">
+                <div id="alert"></div>
+                <form id="petition-form">
                     <div>
                         <label for="office">Political Office</label>
-                        <select name="office" id="office">
+                        <select name="office" id="office-select">
                             <option value="1">President</option>
                             <option value="2">Governor</option>
                         </select>
                     </div>
                     <div>
-                        <label for="petition-body">Content</label>
-                        <textarea name="petition-body" id="petition-body" cols="30" rows="10"></textarea>
+                        <label for="body">Content</label>
+                        <textarea name="body" id="body" cols="30" rows="10"></textarea>
                     </div>
+                     <div>
+                        <label for="evidence">Evidences</label>
+                        <textarea name="evidence" id="evidence" cols="30" rows="2"></textarea>
+                    </div>
+                    <small>Please include the url(i.e hosted somewhere like googl drive, youtube) of your evidences(video, image etc). It should be comma separated</small>
                     <div class="btn-con">
                         <input type="submit" class="btn btn-success" value="Submit Petition">
                     </div>
@@ -76,5 +82,6 @@
         </footer>
     </div>
     <script src="js/main.js"></script>
+    <script src="js/pages/user.js"></script>
 </body>
 </html>

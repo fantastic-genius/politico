@@ -241,3 +241,64 @@ if(candidates_tbl){
     office_select.addEventListener('change', loadAspirants)
 }
 ///----####---VOTE END----####----///
+
+
+///----####---PETITION START----####----///
+const petition_form = document.querySelector('#petition-form')
+
+const loadAllOffices = () => {
+    fetch('https://politico-gen.herokuapp.com/api/v1/offices', {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        }
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            const offices = data.data
+            const office_select = document.querySelector('#office-select')
+            let options = ''
+            offices.forEach(office => {
+                options += `<option value="${office.id}">${office.name}</option>`
+            })
+            office_select.innerHTML = options        
+        }else{
+            displayMessage('danger', data.error)
+        }
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+const submitPetition = (e) => {
+    e.preventDefault()
+    const formData = new URLSearchParams(new FormData(petition_form))
+    fetch('https://politico-gen.herokuapp.com/api/v1/petitions', {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        },
+        body: formData
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 201){
+            displayMessage('success', 'You have successfully submitted your petition')
+            const textareas = document.querySelectorAll('textarea')
+            textareas.forEach(textarea => {
+                textarea.value = ''
+            })
+        }else(
+            displayMessage('danger', data.error)
+        )
+    })
+}
+
+if(petition_form){
+    loadAllOffices()
+    petition_form.addEventListener('submit', submitPetition)
+}
+///----####---PETITION END----####----///
