@@ -55,6 +55,18 @@ class UsersModel{
         
     }
 
+    async changeUserPassword(values){
+        const query = `UPDATE users
+                    SET password=$1 WHERE id=$2
+                    RETURNING *`
+        try{
+            const {rows} = await pool.query(query, values)
+            return rows
+        }catch(error){
+            debugg(error)
+        }
+    }
+
 
 }
 

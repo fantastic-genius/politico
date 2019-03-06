@@ -2,6 +2,7 @@ import Helper from "../helper/helper"
 import usersModel from "../model/usersModel"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
+import bcrypt from "bcryptjs"
 
 dotenv.config()
 
@@ -188,6 +189,103 @@ class AuthMiddleware{
                 })
             }else{
                 next()
+            }
+        }).catch(error => {
+            return res.status(500).send({
+                status: 500,
+                error: "Something went wrong, cannot process your request. Please try again"
+            })
+        })
+    }
+
+    passwordResetMiddleware(req, res, next){
+        if(!req.body.resetToken || !(req.body.resetToken).trim()){
+            return res.status(400).send({
+                status: 400,
+                error: "Reset Token not provided"
+            })
+        }else if(!req.body.password || !(req.body.password).trim()){
+            return  res.status(400).send({
+                status: 400,
+                error: "Password not provided"
+            })
+        }
+
+        try{
+            const decoded_token = jwt.verify(req.body.resetToken, process.env.SECRET)
+            const id = decoded_token.id
+            const user = usersModel.selectUserById([id])
+            user.then(rows => {
+                if(rows.length == 0){
+                    return res.status(404).send({
+                        status: 404,
+                        error: "Such user doesn't exist"
+                    })
+                }else{
+                    req.body.id = id
+                    next()
+                }
+            }).catch(error => {
+                return res.status(500).send({
+                    status: 500,
+                    error: "Something went wrong, cannot process your request. Please try again"
+                })
+            })
+        }catch(error){
+            return res.status(500).send({
+                status: 500,
+                error: "Something went wrong, cannot process your request. Please try again"
+            })
+        }        
+    }
+
+    passwordChangeMiddleware(req, res, next){
+        if(process.env.NODE_ENV !== 'test' && !req.user && !req.user.id){
+            return res.status(401).send({
+                status: 401,
+                error: "You are not authorized to access this page" 
+            })
+        }else if(!req.params.id){
+            return res.status(400).send({
+                status: 400,
+                error: 'User id not provided'
+            })
+        }else if(isNaN(parseInt(req.params.id))){
+            return res.status(400).send({
+                status: 400,
+                error: "An integer is required to be passed as user id"
+            })
+        }else if(!req.body.oldPassword || !(req.body.oldPassword).trim()){
+            return  res.status(400).send({
+                status: 400,
+                error: "Old Password not provided"
+            })
+        }else if(!req.body.newPassword || !(req.body.newPassword).trim()){
+            return  res.status(400).send({
+                status: 400,
+                error: "Old Password not provided"
+            })
+        }
+
+        const user = usersModel.selectUserById([req.params.id])
+        user.then(rows => {
+            
+            if(rows.length == 0){
+                return res.status(404).send({
+                    status: 404,
+                    error: "Such user doesn't exist"
+                })
+            }else{
+
+                if(bcrypt.compareSync(req.body.oldPassword, rows[0].password)){
+                    next()
+                }else{
+                    return res.status(404).send({
+                        status: 404,
+                        error: "Wrong password provided"
+                    })
+                }
+                
             }
         }).catch(error => {
             return res.status(500).send({

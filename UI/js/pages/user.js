@@ -302,3 +302,43 @@ if(petition_form){
     petition_form.addEventListener('submit', submitPetition)
 }
 ///----####---PETITION END----####----///
+
+
+///----####---CHANGE PASSWORD END----####----///
+const password_form = document.querySelector('#change-psw-form')
+const changePassword = (e) => {
+    e.preventDefault()
+    const newPassword = document.querySelector('#newPassword').value
+    const confPassword = document.querySelector('#new-password-conf').value
+
+    if(newPassword !== confPassword){
+        displayMessage('danger', 'New password entered did not match')
+    }else{
+        const user_id = sessionStorage.getItem('user_id')
+        const formData = new URLSearchParams(new FormData(password_form))
+        fetch(`https://politico-gen.herokuapp.com/api/v1/auth/${user_id}/password`, {
+            method: 'PATCH',
+            headers: {
+                Accept: 'application/json',
+                'x-access-token': token
+            },
+            body: formData
+        }).then(res => {
+            return res.json()
+        }).then(data => {
+            if(data.status == 200){
+                displayMessage('success', data.message)
+            }else{
+                displayMessage('danger', data.error)
+            }
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+}
+
+if(password_form){
+    password_form.addEventListener('submit', changePassword)
+}
+
+///----####---CHANGE PASSWORD END----####----///
