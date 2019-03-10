@@ -67,7 +67,33 @@ class UsersModel{
         }
     }
 
+    async updateUser(values){
+        const query = `UPDATE users 
+                SET firstname=$1, othername=$2, lastname=$3, phonenumber=$4
+                WHERE id=$5
+                RETURNING *`
+        
+        try {
+            const {rows} = await pool.query(query, values)
+            return rows
+        } catch (error) {
+            debugg(error)
+        }
+    }
 
+    async updateUserPassport(values ){
+        const query = `UPDATE users 
+                SET passporturl=$1
+                WHERE id=$2
+                RETURNING *`
+        
+        try {
+            const {rows} = await pool.query(query, values)
+            return rows
+        } catch (error) {
+            debugg(error)
+        }
+    }
 }
 
 const usersModel = new UsersModel()

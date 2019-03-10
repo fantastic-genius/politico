@@ -88,3 +88,13 @@ const logoutBtn = document.querySelector('#logout')
 if(logoutBtn){
     logoutBtn.addEventListener('click', logout)
 }
+
+//Set User details
+const name = sessionStorage.getItem('user_name')
+let passporturl = sessionStorage.getItem('passport_url')
+
+if(passporturl == null){
+    passporturl = "../images/user.jpg"
+}
+document.querySelector('#user-name').innerHTML = name
+document.querySelector('#user-img').src = passporturl

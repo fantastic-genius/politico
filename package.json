@@ -4,7 +4,7 @@
   "description": "voting application",
   "main": "index.js",
   "scripts": {
-    "test": "SET DEBUG=* & cross-env NODE_ENV=test npm run drop && npm run migrate && npm run seeddb && nyc --reporter=html --reporter=text mocha --require babel-register --require babel-polyfill server/tests/*.js",
+    "test": "SET DEBUG=* & cross-env NODE_ENV=test npm run drop && npm run migrate && npm run seeddb && nyc --reporter=html --reporter=text mocha --timeout 10000 --require babel-register --require babel-polyfill server/tests/*.js",
     "start": "SET DEBUG=* & nodemon index.js --exec babel-node",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "users": "babel-node ./server/migration/users.js createUsersTable",

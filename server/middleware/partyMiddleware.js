@@ -6,6 +6,7 @@ class PartyMiddleware{
         if(req.image){
             req.body.logoUrl = req.image.url 
         }
+        
         if(process.env.NODE_ENV !== 'test' && !req.user && !req.user.id && req.user.is_admin === false){
             return res.status(401).send({
                 status: 401,
@@ -24,7 +25,7 @@ class PartyMiddleware{
         }else if(!req.body.logoUrl || !(req.body.logoUrl).trim()){
             return res.status(400).send({
                 status: 400,
-                error: "Party logo Url not included in the data posted" 
+                error: "Party logo not uploaded" 
             })
         }else if(!isNaN(parseInt(req.body.name))){
             return res.status(400).send({

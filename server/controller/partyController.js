@@ -2,8 +2,7 @@ import partiesModel from "../model/partiesModel"
 
 class PartyController{
     createParty(req, res){
-        //const logoUrl = req.image.url
-        const {name, hqAddress, logoUrl } = req.body;
+        const {name, hqAddress, logoUrl} = req.body;
         const values = [name, hqAddress, logoUrl]
         const party = partiesModel.createParty(values)
         party.then(rows => {

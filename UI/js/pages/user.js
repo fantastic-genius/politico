@@ -342,3 +342,115 @@ if(password_form){
 }
 
 ///----####---CHANGE PASSWORD END----####----///
+
+
+///----####---PROFILE EDIT START----####----///
+const profile_tbl = document.querySelector('#profile-table')
+
+const editProfile = (e) => {
+    e.preventDefault()
+    const user_id = sessionStorage.getItem('user_id')
+    const firstname = document.querySelector('#first-name').value
+    const othername = document.querySelector('#other-name').value
+    const lastname = document.querySelector('#last-name').value
+    const phoneNumber = document.querySelector('#phone').value
+
+    fetch(`https://politico-gen.herokuapp.com/api/v1/users/${user_id}`, {
+        method: 'PATCH',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token,
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            firstname,
+            othername,
+            lastname,
+            phoneNumber
+        })
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            displayMessage('success', 'Your profile have been successfully updated')
+            const name = data.data[0].firstname + ", " + data.data[0].lastname
+            sessionStorage.setItem('user_name', name)
+            document.querySelector('#user-name').innerHTML = name
+        }else{
+            displayMessage('danger', data.error)
+        }
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+const loadUserProfile = () => {
+    const user_id = sessionStorage.getItem('user_id')
+    fetch(`https://politico-gen.herokuapp.com/api/v1/users/${user_id}`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        }
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            const {firstname, othername, lastname, email, phonenumber, passporturl} = data.data[0]
+            document.querySelector('#first-name').value = firstname
+            document.querySelector('#other-name').value = othername
+            document.querySelector('#last-name').value = lastname
+            document.querySelector('#phone').value = phonenumber
+            document.querySelector('#email').innerHTML = email
+            let passport_url = "../images/user.jpg"
+            if(passporturl !== null){
+                passport_url = passporturl
+            }
+            document.querySelector('#user-photo').src = passport_url
+
+        }else{
+            displayMessage('danger', data.error)
+        }
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+const uploadPassport = (e) => {
+    e.preventDefault()
+    const passport_form = document.querySelector('#passport-form')
+    const formData = new FormData(passport_form)
+    const user_id = sessionStorage.getItem('user_id')
+    
+    fetch(`https://politico-gen.herokuapp.com/api/v1/users/${user_id}/passport`,{
+        method: 'PATCH',
+        headers: {
+            Accept: 'application/json',
+            'x-access-token': token
+        },
+        body: formData
+    }).then(res => {
+        return res.json()
+    }).then(data => {
+        if(data.status == 200){
+            displayMessage('success', 'Image have been uploaded succesfully')
+
+            const passport_url = data.data[0].passportUrl
+            sessionStorage.setItem('passport_url', passport_url)
+            document.querySelector('#user-photo').src = passport_url
+            document.querySelector('#user-img').src = passport_url
+        }else{
+            displayMessage('danger', data.error)
+        }
+    })
+}
+
+if(profile_tbl){
+    loadUserProfile()
+    const update_btn = document.querySelector('#update-btn')
+    update_btn.addEventListener('click', editProfile)
+
+    const passport_form = document.querySelector('#passport-form')
+    passport_form.addEventListener('submit', uploadPassport)
+}
+///----####---PROFILE EDIT END----####----///

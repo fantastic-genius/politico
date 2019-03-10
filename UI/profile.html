@@ -22,10 +22,10 @@
             <aside>
                 <div class="user">
                     <div class="photo">
-                        <img src="../images/user.jpg" alt="User">
+                        <img id="user-img" src="../images/user.jpg" alt="User">
                     </div>
                     <div class="username">
-                        <p>John, Doe</p>
+                        <p id="user-name"></p>
                     </div>
                 </div>
                 <div class="menu">
@@ -53,49 +53,50 @@
                     <h3>Profile</h3>
                     <hr>
                 </div>
+                <div id="alert"></div>
                 <div class="profile-con">
                     <div class="profile-pix">
-                        <img src="../images/user.jpg" alt="User">
+                        <img id="user-photo" src="../images/user.jpg" alt="User">
                     </div>
                     <div class="profile-box">
-                        <table>
+                        <table id="profile-table">
                             <tbody>
                                 <tr>
                                     <td>First Name</td>
-                                    <td><input type="text" name="first-name" placeholder="John" readonly></td>
+                                    <td><input type="text" id="first-name" name="first-name" readonly></td>
                                 </tr>
                                 <tr>
                                     <td>Other Name</td>
-                                    <td><input type="text" name="other-name" placeholder="" readonly></td>
+                                    <td><input type="text" id="other-name" name="other-name" readonly></td>
                                 </tr>
                                 <tr>
                                     <td>Last Name</td>
-                                    <td><input type="text" name="last-name" placeholder="Doe" readonly></td>
+                                    <td><input type="text" id="last-name" name="last-name" readonly></td>
                                 </tr>
                                 <tr>
                                     <td>E-mail</td>
-                                    <td>johndoe@example.com</td>
+                                    <td id="email"></td>
                                 </tr>
                                 <tr>
                                     <td>Phone Number</td>
-                                    <td><input type="text" name="phone" placeholder="08012345678" readonly></td>
+                                    <td><input type="text" id="phone" name="phone" readonly></td>
                                 </tr>
                             </tbody>
                         </table>
                         
                     </div>
                     <div class="upload-con">
-                        <form action="#" enctype="multipart/form-data" >
+                        <form id="passport-form" enctype="multipart/form-data" >
                             <div>
                                 <label for="logo">Upload Profile Picture</label>
                                 <input type="file" name="profile-pics">
-                                <input type="submit" class="btn btn-success" name="upload" value="Upload">
+                                <input type="submit" id="upload-btn" class="btn btn-success" name="upload" value="Upload">
                             </div>
                         
                         </form>
                     </div>
                     <div class="btn-con">
-                        <input type="submit" class="btn btn-success" value="Update">
+                        <input type="submit" id="update-btn" class="btn btn-success" value="Update">
                         <button id="edit-profile" class="btn btn-warning"><a href="#">Edit</a></button>
                         <button id="cancel-edit" class="btn btn-warning hide"><a href="#">Cancel</a></button>
                     </div>
@@ -108,5 +109,6 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/pages/user.js"></script>
 </body>
 </html>
