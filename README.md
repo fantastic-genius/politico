@@ -14,39 +14,19 @@ A voting application where politicians can show interest for a political office 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+## Hosted Client Side
+https://fantastic-genius.github.io/politico/
+
+
 ### Prerequisites
 
 You need to install the following dependencies:
 
-Dependecies
-- express
-- babel-cli
-- babel-env
-- nodemon
-- body-parser
-- morgan
-- debug
-- eslint
-- mocha
-- chai
-- chai-http
-- pg
-- babel-polyfill
-- jsonwebtoken
-- bscriptjs
-
-Development Dependencies
-- coveralls
-- cross-env
-- make-runnable
-- istanbul
-- mocha-lcov-reporter
-- nyc
 ```
 npm install express --save
 ```
 
-### Installing
+### Starting
 
 After successfully installing the dependencies all you need is to start your application to get your application running. to do that just run 'npm start' after you have navigated to the directory where you saved this application
 
